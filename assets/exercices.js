@@ -209,6 +209,26 @@
     div.append(bouton, msg);
   }
 
+  // Onglet « Les devoirs » : le travail recopié tel quel depuis les photos.
+  const zoneDevoirs = document.getElementById("devoirs");
+  if (zoneDevoirs) {
+    (window.DEVOIRS || []).forEach(d => {
+      const div = document.createElement("section");
+      div.className = "exo devoir";
+      div.innerHTML = `<h2>${d.titre}</h2>${d.html}`;
+      zoneDevoirs.appendChild(div);
+    });
+    document.querySelectorAll(".onglets button").forEach(b => {
+      b.onclick = () => {
+        const entr = b.dataset.onglet === "entrainement";
+        document.querySelectorAll(".onglets button").forEach(x => x.classList.toggle("actif", x === b));
+        zoneDevoirs.hidden = entr;
+        zone.hidden = !entr;
+        scoreEl.hidden = !entr;
+      };
+    });
+  }
+
   if ("speechSynthesis" in window) speechSynthesis.getVoices();
   (window.EXERCICES || []).forEach(exo => rendus[exo.type](exo));
   majScore();

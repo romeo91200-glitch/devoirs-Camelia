@@ -12,7 +12,7 @@ Site statique (HTML/CSS/JS, sans build) publié sur Netlify depuis ce dépôt.
 
 ## Ajouter un jour
 
-1. Copier un dossier existant (ex. `devoirs/2026-10-08/`) vers `devoirs/AAAA-MM-JJ/` et remplacer `window.EXERCICES`.
+1. Copier un dossier existant (ex. `devoirs/2026-10-08/`) vers `devoirs/AAAA-MM-JJ/`, remplacer `window.DEVOIRS` (onglet « Les devoirs » : le travail recopié tel quel depuis les photos) et `window.EXERCICES` (onglet « Entraînement »).
 2. Ajouter `{ date: "AAAA-MM-JJ", titre: "..." }` dans `assets/jours.js`.
 
 ## Netlify

@@ -17,10 +17,75 @@
     <p>Appuie sur 🔊 pour écouter. C'est parti !</p>
   </header>
 
-  <main id="exercices" class="exercices"></main>
-  <div id="score" class="score"></div>
+  <nav class="onglets">
+    <button type="button" data-onglet="devoirs" class="actif">📋 Les devoirs</button>
+    <button type="button" data-onglet="entrainement">🎮 Entraînement</button>
+  </nav>
+  <main id="devoirs" class="exercices"></main>
+  <main id="exercices" class="exercices" hidden></main>
+  <div id="score" class="score" hidden></div>
 
   <script>
+    // Les devoirs tels qu'ils sont sur les photos (recopiés à l'identique).
+    window.DEVOIRS = [
+      {
+        titre: "📝 Pour le jeudi 8 octobre",
+        html: `<ul>
+          <li>Calcul mental (pochette) : <b>B6</b></li>
+          <li>Orthographe/encodage : <b>dictée 8 « e »</b> à préparer (pochette) + leçon <b>O1</b> (porte-vues bleu) : <u>liste 4</u> « est »</li>
+          <li>Langage : votre enfant vous raconte l'histoire d'Alfi « La solitude » puis vous pouvez ensuite la réécouter avec lui grâce au QR (porte-vues lecture)</li>
+          <li>Calcul : leçon <b>C8</b> (maisons du 6 au 8)</li>
+        </ul>`,
+      },
+      {
+        titre: "🔢 Calcul mental B6 (liste B)",
+        html: `<p><i>Les calculs se font de tête à l'oral (sans limite de temps mais en essayant d'être le plus rapide possible). Ne faites pas les listes en avance, l'entraînement doit être régulier et il suit une progression de travail en classe.</i></p>
+          <p>Thème : Construire les tables d'addition jusqu'à 10 – Lecture de nombres</p>
+          <p class="gros"><u>Lis</u> : 15 - 12 - 8 - 13 - 11 - 6 - 10 - 9 - 7 - 14 - 17</p>`,
+      },
+      {
+        titre: "✏️ Dictée 8 : e E (le ressort)",
+        html: `<p>1 œuf :</p><p class="gros cursive">le - re - se - fe - est</p>
+          <p>2 œufs :</p><p class="gros cursive">le - re - se - fe - lire - est</p>
+          <p>3 œufs :</p><p class="gros cursive">le - re - se - fe - lire - la file - est</p>`,
+      },
+      {
+        titre: "🔍 Leçon O1 : Les mots outils (liste 4)",
+        html: `<table class="tableau">
+          <tr><td>1</td><td>un - une</td></tr>
+          <tr><td>2</td><td>il y a</td></tr>
+          <tr><td>3</td><td>et</td></tr>
+          <tr class="surligne"><td>4</td><td>est</td></tr>
+          <tr><td>5</td><td>dans</td></tr>
+          <tr><td>6</td><td>c'est</td></tr>
+          <tr><td>7</td><td>elle</td></tr>
+          <tr><td>8</td><td>les - des</td></tr>
+        </table>
+        <p><b><u>Pour apprendre les mots outils (à l'attention des parents)</u></b><br>
+        L'élève doit savoir <b>identifier/lire ces mots instantanément</b>. Il doit également savoir <b>écrire les mots surlignés</b>, sans avoir recours à un modèle. Pour l'aider, vous pouvez :<br>
+        1) L'élève doit s'entraîner à savoir les lire rapidement.<br>
+        2) Faire épeler chaque mot avec le cahier sous les yeux puis sans le modèle.<br>
+        3) Faire recopier le mot surligné sur une ardoise ou un cahier de brouillon avec le modèle sous les yeux puis sans le modèle.<br>
+        4) Faire une dictée.<br>
+        5) Revoir régulièrement les listes déjà travaillées.</p>`,
+      },
+      {
+        titre: "📖 Langage : Alfi « La solitude »",
+        html: `<p>Et Matéo lui répond tristement :<br>« Demain, je ne pourrai pas venir, les grandes vacances sont terminées. »</p>
+          <p style="text-align:center"><b><u>La solitude</u></b></p>
+          <p>Les jours passent et Alfi se sent seul. Son copain lui manque. Il erre près du lac, les oreilles baissées, ne sachant pas comment occuper ses journées. Des larmes coulent sur son visage, son sourire a disparu. La solitude lui pèse.</p>
+          <p>Tout à coup, quelque chose le fait trébucher. Le curieux objet a roulé quelques mètres plus loin. Alfi, intrigué, s'en approche pour mieux l'observer. Ses oreilles se dressent, son sourire réapparaît.</p>
+          <p>« Youpi ! Un ballon ! » s'écrie-t-il.</p>
+          <p>Alfi s'en empare et le fait rouler jusqu'à l'eau. Là, il s'amuse à le lancer en l'air avec sa trompe comme lui a appris Matéo. Il rit chaque fois que le ballon retombe dans l'eau et l'éclabousse.</p>
+          <p>L'éléphant a enfin retrouvé de quoi se divertir.</p>
+          <p><a href="https://ecole.nathan.fr/texte05_la_solitude" target="_blank" rel="noopener">🎧 Audio du QR code</a></p>`,
+      },
+      {
+        titre: "🏠 Calcul : leçon C8 (maisons du 6 au 8)",
+        html: `<p>La leçon C8 n'était pas sur les photos : revoir les maisons du 6, du 7 et du 8 dans le cahier de leçons.</p>`,
+      },
+    ];
+
     window.EXERCICES = [
       // Calcul mental B6 : lecture de nombres
       {
@@ -61,8 +126,11 @@
         consigne: "Écoute avec 🔊 et écris le mot. Puis clique sur Vérifier.",
         mots: [
           { dire: "le", ecrire: "le" },
+          { dire: "re, comme au début de : ressort", ecrire: "re" },
           { dire: "se", ecrire: "se" },
+          { dire: "fe, comme au début de : fenêtre", ecrire: "fe" },
           { dire: "lire", ecrire: "lire" },
+          { dire: "la file", ecrire: "la file" },
           { dire: "est, comme dans : il est content", ecrire: "est" },
         ],
       },

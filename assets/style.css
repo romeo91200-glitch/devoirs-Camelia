@@ -182,3 +182,30 @@ a { color: inherit; }
 
 
 .choix .verifier { background: var(--violet); color: #fff; margin-top: 0; }
+
+/* ---------- Onglets : devoirs tels quels / entraînement ---------- */
+.onglets { display: flex; justify-content: center; gap: 8px; margin: 0 auto 16px; max-width: 720px; }
+.onglets button {
+  flex: 1;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: bold;
+  padding: 10px 8px;
+  border-radius: 14px;
+  border: 2px solid var(--violet);
+  background: #fff;
+  color: var(--violet);
+  cursor: pointer;
+}
+.onglets button.actif { background: var(--violet); color: #fff; }
+
+.devoir ul { padding-left: 1.2em; margin: 0; line-height: 1.6; }
+.devoir p { line-height: 1.5; }
+.gros { font-size: 1.4rem; font-weight: bold; }
+.cursive { font-family: "Comic Sans MS", "Segoe Script", cursive; color: #2d3a8c; }
+.tableau { border-collapse: collapse; width: 100%; font-size: 1.3rem; margin-bottom: 10px; }
+.tableau td { border: 1px solid #ccc; padding: 6px 10px; }
+.tableau td:first-child { width: 2.5em; text-align: center; color: var(--violet); font-weight: bold; }
+.tableau .surligne td { background: #fff3a8; }
+
+[hidden] { display: none !important; }
