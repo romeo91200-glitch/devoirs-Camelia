@@ -18,3 +18,8 @@ Site statique (HTML/CSS/JS, sans build) publié sur Netlify depuis ce dépôt.
 ## Netlify
 
 Aucune commande de build, dossier de publication : la racine du dépôt (voir `netlify.toml`).
+
+## Application Android
+
+Le site est installable (PWA) : `manifest.webmanifest`, `icons/`, `sw.js` (réseau d'abord, cache hors connexion).
+Les pages de jour doivent garder les balises `manifest` / `theme-color` du `<head>` (déjà présentes si on copie un dossier existant).
