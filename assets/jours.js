@@ -2,5 +2,5 @@
 // La date est celle où les devoirs sont à rendre. Le prochain dossier (aujourd'hui ou plus tard)
 // clignote sur la page d'accueil avec « Devoirs du jour ».
 window.JOURS = [
-  { date: "2026-10-08", titre: "Dictée « e », le mot « est », Alfi, maisons 6 à 8" },
+  { date: "2026-10-08", titre: "Dictée 8, mots outils, Alfi, maisons 6 à 8" },
 ];

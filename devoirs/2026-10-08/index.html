@@ -42,7 +42,7 @@
       // Dictée 8 : le son « e »
       {
         type: "qcm",
-        titre: "👂 J'entends le son « e » (dictée 8)",
+        titre: "👂 J'écoute les syllabes (dictée 8)",
         consigne: "Écoute le mot avec 🔊. Quelle syllabe entends-tu au début ?",
         questions: [
           { q: "", dire: "ressort", choix: ["ra", "re", "ri"], bonne: 1 },
@@ -63,20 +63,20 @@
         ],
       },
 
-      // Leçon O1, liste 4 : le mot « est »
+      // Leçon O1, liste 4 : le mot outil du jour, seulement à l'oreille (ne jamais l'écrire dans les consignes)
       {
         type: "qcm",
-        titre: "🔍 Le mot outil « est » (O1, liste 4)",
-        consigne: "Trouve le mot « est ».",
+        titre: "🔍 Le mot outil (O1, liste 4)",
+        consigne: "Écoute avec 🔊 puis clique sur le mot que tu entends.",
         questions: [
-          { q: "Lequel est le mot « est » ?", choix: ["et", "est", "ets"], bonne: 1 },
-          { q: "Et maintenant ?", choix: ["ses", "tes", "est"], bonne: 2 },
-          { q: "Encore une fois !", choix: ["est", "elle", "et"], bonne: 0 },
+          { q: "", dire: "est. Comme dans : il est content.", choix: ["et", "est", "les"], bonne: 1 },
+          { q: "", dire: "est. Comme dans : elle est grande.", choix: ["ses", "des", "est"], bonne: 2 },
+          { q: "", dire: "est. Comme dans : le chat est noir.", choix: ["est", "elle", "une"], bonne: 0 },
         ],
       },
       {
         type: "qcm",
-        titre: "🐘 « est » ou « et » ?",
+        titre: "🐘 Quel mot manque ?",
         consigne: "Choisis le bon mot pour compléter la phrase.",
         questions: [
           { q: "Alfi … triste.", choix: ["est", "et"], bonne: 0 },
@@ -85,12 +85,12 @@
         ],
       },
       {
-        type: "trous",
-        titre: "✍️ J'écris « est »",
-        consigne: "Écris le mot qui manque puis clique sur Vérifier.",
-        phrases: [
-          "Le lac [est] grand.",
-          "L'éléphant [est] content.",
+        type: "dictee",
+        titre: "✍️ J'écris le mot outil",
+        consigne: "Écoute la phrase avec 🔊 et écris le petit mot qu'on te demande.",
+        mots: [
+          { dire: "Le lac est grand. Écris le mot : est.", ecrire: "est" },
+          { dire: "L'éléphant est content. Écris le mot : est.", ecrire: "est" },
         ],
       },
 
