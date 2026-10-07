@@ -1,0 +1,166 @@
+:root {
+  --fond: #fff7fb;
+  --texte: #3b2a4a;
+  --rose: #ff6fa8;
+  --violet: #8a5cf6;
+  --jaune: #ffcf3f;
+  --vert: #2fbf71;
+  --rouge: #ef4b4b;
+  --carte: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", "Chalkboard SE", "Trebuchet MS", system-ui, sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  padding: 16px;
+}
+
+a { color: inherit; }
+
+.entete { text-align: center; margin: 8px 0 24px; }
+.entete h1 { color: var(--violet); margin: 0 0 6px; font-size: clamp(1.6rem, 5vw, 2.4rem); }
+.entete p { margin: 0; font-size: 1.1rem; }
+
+/* ---------- Page d'accueil : dossiers ---------- */
+.dossiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dossier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 10px 14px;
+  background: var(--carte);
+  border-radius: 18px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(138, 92, 246, .15);
+  transition: transform .15s;
+}
+.dossier:hover { transform: translateY(-4px) rotate(-1deg); }
+
+.icone {
+  width: 90px;
+  height: 66px;
+  background: var(--jaune);
+  border-radius: 6px 10px 10px 10px;
+  position: relative;
+  margin-top: 10px;
+}
+.icone::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 40px;
+  height: 14px;
+  background: var(--jaune);
+  border-radius: 6px 6px 0 0;
+  filter: brightness(.92);
+}
+
+.date { font-weight: bold; text-transform: capitalize; text-align: center; }
+.titre { font-size: .9rem; opacity: .75; text-align: center; }
+
+.badge {
+  position: absolute;
+  top: -12px;
+  background: var(--rose);
+  color: #fff;
+  font-weight: bold;
+  font-size: .9rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.du-jour { outline: 4px solid var(--rose); }
+.du-jour .icone { background: var(--rose); }
+.du-jour .icone::before { background: var(--rose); }
+.du-jour { animation: clignote 1s ease-in-out infinite; }
+
+@keyframes clignote {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .du-jour { animation-duration: 2s; }
+}
+
+/* ---------- Pages d'exercices ---------- */
+.retour {
+  display: inline-block;
+  margin-bottom: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--violet);
+}
+
+.exercices { max-width: 720px; margin: 0 auto; display: grid; gap: 18px; }
+
+.exo {
+  background: var(--carte);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(138, 92, 246, .12);
+}
+.exo h2 { margin: 0 0 6px; color: var(--violet); font-size: 1.3rem; }
+.consigne { margin: 0 0 14px; }
+
+.question { margin: 0 0 14px; }
+.question p { margin: 0 0 8px; font-size: 1.15rem; }
+
+.choix { display: flex; flex-wrap: wrap; gap: 8px; }
+.choix button, .verifier {
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--violet);
+  background: #fff;
+  color: var(--texte);
+  cursor: pointer;
+}
+.choix button:disabled { cursor: default; }
+.choix button.bon { background: var(--vert); border-color: var(--vert); color: #fff; }
+.choix button.faux { background: var(--rouge); border-color: var(--rouge); color: #fff; }
+
+.trou {
+  font: inherit;
+  font-size: 1.05rem;
+  width: 7em;
+  padding: 4px 8px;
+  border: 2px dashed var(--violet);
+  border-radius: 8px;
+  text-align: center;
+}
+.trou.bon { border: 2px solid var(--vert); background: #e6f8ee; }
+.trou.faux { border: 2px solid var(--rouge); background: #fdeaea; }
+
+.verifier { background: var(--violet); color: #fff; margin-top: 4px; }
+
+.retour-msg { font-weight: bold; min-height: 1.4em; margin: 6px 0 0; }
+
+.score {
+  position: sticky;
+  bottom: 12px;
+  max-width: 720px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: var(--jaune);
+  border-radius: 999px;
+  padding: 10px;
+}

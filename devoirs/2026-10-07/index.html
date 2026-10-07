@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devoirs du 7 octobre</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="retour" href="../../">⬅ Retour aux dossiers</a>
+  <header class="entete">
+    <h1>Mercredi 7 octobre</h1>
+    <p>Exemple pour découvrir le site, les vrais devoirs arrivent bientôt !</p>
+  </header>
+
+  <main id="exercices" class="exercices"></main>
+  <div id="score" class="score"></div>
+
+  <script>
+    window.EXERCICES = [
+      {
+        type: "qcm",
+        titre: "🧮 Petit calcul",
+        consigne: "Clique sur la bonne réponse.",
+        questions: [
+          { q: "3 + 4 = ?", choix: ["6", "7", "8"], bonne: 1 },
+          { q: "10 − 2 = ?", choix: ["8", "12", "7"], bonne: 0 },
+        ],
+      },
+      {
+        type: "trous",
+        titre: "✏️ Complète les phrases",
+        consigne: "Écris le mot qui manque puis clique sur Vérifier.",
+        phrases: [
+          "Le chat boit du [lait].",
+          "Il y a [sept|7] jours dans une semaine.",
+        ],
+      },
+      {
+        type: "vraifaux",
+        titre: "🤔 Vrai ou faux ?",
+        questions: [
+          { q: "Le soleil se lève le matin.", vrai: true },
+          { q: "Un poisson vit dans un arbre.", vrai: false },
+        ],
+      },
+    ];
+  </script>
+  <script src="../../assets/exercices.js"></script>
+</body>
+</html>

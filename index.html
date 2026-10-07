@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les devoirs de Camélia</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="entete">
+    <h1>🌸 Les devoirs de Camélia 🌸</h1>
+    <p>Choisis un dossier pour commencer tes exercices !</p>
+  </header>
+
+  <main id="dossiers" class="dossiers"></main>
+
+  <script src="assets/jours.js"></script>
+  <script>
+    const pad = n => String(n).padStart(2, "0");
+    const now = new Date();
+    const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+    const fmt = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+
+    const jours = [...window.JOURS].sort((a, b) => b.date.localeCompare(a.date));
+    const zone = document.getElementById("dossiers");
+
+    if (!jours.length) zone.innerHTML = "<p>Pas encore de devoirs ici.</p>";
+
+    for (const j of jours) {
+      const [y, m, d] = j.date.split("-").map(Number);
+      const libelle = fmt.format(new Date(y, m - 1, d));
+      const estAujourdhui = j.date === today;
+      const a = document.createElement("a");
+      a.href = `devoirs/${j.date}/`;
+      a.className = "dossier" + (estAujourdhui ? " du-jour" : "");
+      a.innerHTML = `
+        ${estAujourdhui ? '<span class="badge">Devoirs du jour</span>' : ""}
+        <span class="icone" aria-hidden="true"></span>
+        <span class="date">${libelle}</span>
+        ${j.titre ? `<span class="titre">${j.titre}</span>` : ""}`;
+      zone.appendChild(a);
+    }
+  </script>
+</body>
+</html>
