@@ -7,6 +7,7 @@
 //   { type: "vraifaux", titre, consigne, questions: [{ q, vrai: true|false }] }
 //   { type: "dictee", titre, consigne, mots: ["lire", { dire: "il est", ecrire: "est" }] }  // 🔊 puis on écrit
 //   { type: "info", titre, texte }   // simple carte de consigne (rien à corriger)
+//   { type: "histoire", titre, texte, lien }  // ▶ lit le texte à voix haute ; lien = audio de l'école (QR code)
 // Une question de qcm/vraifaux peut avoir `dire: "..."` : un bouton 🔊 lit ce texte à voix haute.
 
 (function () {
@@ -101,6 +102,40 @@
       p.className = "info";
       p.innerHTML = exo.texte;
       div.appendChild(p);
+    },
+    histoire(exo) {
+      const div = carte(exo);
+      const boutons = document.createElement("div");
+      boutons.className = "choix";
+      const lire = document.createElement("button");
+      lire.className = "verifier";
+      lire.textContent = "▶ Écouter l'histoire";
+      lire.onclick = () => {
+        if (!("speechSynthesis" in window)) return;
+        if (speechSynthesis.speaking) {
+          speechSynthesis.cancel();
+          lire.textContent = "▶ Écouter l'histoire";
+          return;
+        }
+        parle(exo.texte);
+        lire.textContent = "⏹ Arrêter";
+        const u = speechSynthesis;
+        const fin = setInterval(() => {
+          if (!u.speaking) { clearInterval(fin); lire.textContent = "▶ Écouter l'histoire"; }
+        }, 500);
+      };
+      boutons.appendChild(lire);
+      if (exo.lien) {
+        const a = document.createElement("a");
+        a.className = "verifier";
+        a.href = exo.lien;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.style.textDecoration = "none";
+        a.textContent = "🎧 Version audio de l'école";
+        boutons.appendChild(a);
+      }
+      div.appendChild(boutons);
     },
     dictee(exo) {
       const div = carte(exo);

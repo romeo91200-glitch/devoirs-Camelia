@@ -180,3 +180,5 @@ a { color: inherit; }
 .info { font-size: 1.1rem; line-height: 1.5; }
 .info ol, .info ul { padding-left: 1.3em; margin: 6px 0; }
 
+
+.choix .verifier { background: var(--violet); color: #fff; margin-top: 0; }
