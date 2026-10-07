@@ -164,3 +164,19 @@ a { color: inherit; }
   border-radius: 999px;
   padding: 10px;
 }
+
+.ecoute {
+  font-size: 1.2rem;
+  border: none;
+  background: var(--jaune);
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  cursor: pointer;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.info { font-size: 1.1rem; line-height: 1.5; }
+.info ol, .info ul { padding-left: 1.3em; margin: 6px 0; }
+

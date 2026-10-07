@@ -1,5 +1,6 @@
 // Liste des jours de devoirs. Ajouter une ligne par jour (un dossier devoirs/AAAA-MM-JJ/ doit exister).
-// Le dossier dont la date est aujourd'hui clignote sur la page d'accueil avec « Devoirs du jour ».
+// La date est celle où les devoirs sont à rendre. Le prochain dossier (aujourd'hui ou plus tard)
+// clignote sur la page d'accueil avec « Devoirs du jour ».
 window.JOURS = [
-  { date: "2026-10-07", titre: "Exemple : découverte du site" },
+  { date: "2026-10-08", titre: "Dictée « e », le mot « est », Alfi, maisons 6 à 8" },
 ];

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devoirs du 8 octobre</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="retour" href="../../">⬅ Retour aux dossiers</a>
+  <header class="entete">
+    <h1>Jeudi 8 octobre</h1>
+    <p>Appuie sur 🔊 pour écouter. C'est parti !</p>
+  </header>
+
+  <main id="exercices" class="exercices"></main>
+  <div id="score" class="score"></div>
+
+  <script>
+    window.EXERCICES = [
+      // Calcul mental B6 : lecture de nombres
+      {
+        type: "qcm",
+        titre: "🔢 Calcul mental : les nombres (B6)",
+        consigne: "Écoute le nombre avec 🔊 puis clique dessus.",
+        questions: [
+          { q: "", dire: "quinze", choix: ["5", "15", "50"], bonne: 1 },
+          { q: "", dire: "douze", choix: ["12", "2", "20"], bonne: 0 },
+          { q: "", dire: "treize", choix: ["3", "30", "13"], bonne: 2 },
+          { q: "", dire: "onze", choix: ["11", "1", "10"], bonne: 0 },
+          { q: "", dire: "quatorze", choix: ["4", "14", "40"], bonne: 1 },
+          { q: "", dire: "dix-sept", choix: ["7", "16", "17"], bonne: 2 },
+          { q: "", dire: "dix", choix: ["10", "1", "11"], bonne: 0 },
+        ],
+      },
+      {
+        type: "info",
+        titre: "🗣️ À voix haute",
+        texte: "Lis ces nombres le plus vite possible à papa ou maman :<br><strong style='font-size:1.6rem;letter-spacing:.1em'>15 – 12 – 8 – 13 – 11 – 6 – 10 – 9 – 7 – 14 – 17</strong>",
+      },
+
+      // Dictée 8 : le son « e »
+      {
+        type: "qcm",
+        titre: "👂 J'entends le son « e » (dictée 8)",
+        consigne: "Écoute le mot avec 🔊. Quelle syllabe entends-tu au début ?",
+        questions: [
+          { q: "", dire: "ressort", choix: ["ra", "re", "ri"], bonne: 1 },
+          { q: "", dire: "semaine", choix: ["se", "sa", "so"], bonne: 0 },
+          { q: "", dire: "fenêtre", choix: ["fa", "fi", "fe"], bonne: 2 },
+          { q: "", dire: "le", choix: ["la", "le", "li"], bonne: 1 },
+        ],
+      },
+      {
+        type: "dictee",
+        titre: "✏️ Petite dictée",
+        consigne: "Écoute avec 🔊 et écris le mot. Puis clique sur Vérifier.",
+        mots: [
+          { dire: "le", ecrire: "le" },
+          { dire: "se", ecrire: "se" },
+          { dire: "lire", ecrire: "lire" },
+          { dire: "est, comme dans : il est content", ecrire: "est" },
+        ],
+      },
+
+      // Leçon O1, liste 4 : le mot « est »
+      {
+        type: "qcm",
+        titre: "🔍 Le mot outil « est » (O1, liste 4)",
+        consigne: "Trouve le mot « est ».",
+        questions: [
+          { q: "Lequel est le mot « est » ?", choix: ["et", "est", "ets"], bonne: 1 },
+          { q: "Et maintenant ?", choix: ["ses", "tes", "est"], bonne: 2 },
+          { q: "Encore une fois !", choix: ["est", "elle", "et"], bonne: 0 },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🐘 « est » ou « et » ?",
+        consigne: "Choisis le bon mot pour compléter la phrase.",
+        questions: [
+          { q: "Alfi … triste.", choix: ["est", "et"], bonne: 0 },
+          { q: "Alfi … Matéo sont copains.", choix: ["est", "et"], bonne: 1 },
+          { q: "Le ballon … dans l'eau.", choix: ["est", "et"], bonne: 0 },
+        ],
+      },
+      {
+        type: "trous",
+        titre: "✍️ J'écris « est »",
+        consigne: "Écris le mot qui manque puis clique sur Vérifier.",
+        phrases: [
+          "Le lac [est] grand.",
+          "L'éléphant [est] content.",
+        ],
+      },
+
+      // Langage : Alfi, « La solitude »
+      {
+        type: "vraifaux",
+        titre: "📖 Alfi : « La solitude »",
+        consigne: "Vrai ou faux ? Écoute avec 🔊 si tu veux.",
+        questions: [
+          { q: "Matéo ne peut pas venir : les vacances sont finies.", dire: "Matéo ne peut pas venir : les vacances sont finies.", vrai: true },
+          { q: "Alfi se sent seul.", dire: "Alfi se sent seul.", vrai: true },
+          { q: "Alfi trébuche sur un caillou.", dire: "Alfi trébuche sur un caillou.", vrai: false },
+          { q: "Alfi joue avec le ballon grâce à sa trompe.", dire: "Alfi joue avec le ballon grâce à sa trompe.", vrai: true },
+          { q: "À la fin, Alfi pleure encore.", dire: "À la fin, Alfi pleure encore.", vrai: false },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🎈 As-tu bien compris ?",
+        questions: [
+          { q: "Où se promène Alfi ?", choix: ["Près du lac", "Dans la forêt", "À l'école"], bonne: 0 },
+          { q: "Quel objet trouve Alfi ?", choix: ["Un ballon", "Une balle de tennis", "Un livre"], bonne: 0 },
+          { q: "Qui lui a appris à lancer avec sa trompe ?", choix: ["Sa maman", "Matéo", "Un singe"], bonne: 1 },
+        ],
+      },
+      {
+        type: "info",
+        titre: "🗣️ Raconte l'histoire",
+        texte: "Raconte l'histoire d'Alfi à papa ou maman, puis réécoutez-la ensemble avec le QR code du porte-vues lecture.<ol><li>Au début, comment se sent Alfi ? Pourquoi ?</li><li>Que se passe-t-il tout à coup ?</li><li>Que fait Alfi avec le ballon ?</li><li>Comment se sent-il à la fin ?</li></ol>",
+      },
+
+      // Calcul : leçon C8, maisons du 6 au 8
+      {
+        type: "trous",
+        titre: "🏠 La maison du 6",
+        consigne: "Complète pour que ça fasse 6.",
+        phrases: ["6 = 5 + [1]", "6 = 4 + [2]", "6 = 3 + [3]", "6 = [6] + 0"],
+      },
+      {
+        type: "trous",
+        titre: "🏠 La maison du 7",
+        consigne: "Complète pour que ça fasse 7.",
+        phrases: ["7 = 6 + [1]", "7 = 5 + [2]", "7 = 4 + [3]", "7 = 0 + [7]"],
+      },
+      {
+        type: "trous",
+        titre: "🏠 La maison du 8",
+        consigne: "Complète pour que ça fasse 8.",
+        phrases: ["8 = 7 + [1]", "8 = 6 + [2]", "8 = 5 + [3]", "8 = 4 + [4]"],
+      },
+    ];
+  </script>
+  <script src="../../assets/exercices.js"></script>
+</body>
+</html>

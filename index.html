@@ -22,6 +22,8 @@
     const fmt = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" });
 
     const jours = [...window.JOURS].sort((a, b) => b.date.localeCompare(a.date));
+    // Le dossier qui clignote : le prochain jour de devoirs (aujourd'hui ou plus tard).
+    const prochain = jours.filter(j => j.date >= today).map(j => j.date).sort()[0];
     const zone = document.getElementById("dossiers");
 
     if (!jours.length) zone.innerHTML = "<p>Pas encore de devoirs ici.</p>";
@@ -29,7 +31,7 @@
     for (const j of jours) {
       const [y, m, d] = j.date.split("-").map(Number);
       const libelle = fmt.format(new Date(y, m - 1, d));
-      const estAujourdhui = j.date === today;
+      const estAujourdhui = j.date === prochain;
       const a = document.createElement("a");
       a.href = `devoirs/${j.date}/`;
       a.className = "dossier" + (estAujourdhui ? " du-jour" : "");
