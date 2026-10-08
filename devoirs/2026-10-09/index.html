@@ -47,7 +47,19 @@
       },
       {
         titre: "🎵 Poésie « La semaine en couleurs »",
-        html: `<p>Le texte de la poésie n'était pas sur les photos. À apprendre jusqu'à « repose ».</p>`,
+        html: `<p><i>À apprendre jusqu'à « repose ».</i></p>
+          <div class="poesie">
+            <p class="titre-poesie">La semaine en couleurs !!</p>
+            <p>Le <span style="color:#8a8a8a">lundi</span> est tout <span style="color:#8a8a8a">gris</span><br>
+            <span style="color:#d4b000">Jaune</span> clair est le <span style="color:#d4b000">mardi</span><br>
+            Mais voici <span style="color:#e07aa0">mercredi rose</span><br>
+            On se repose !</p>
+            <p class="apres"><span style="color:#5b9bd5">Jeudi bleu</span> vient à son tour<br>
+            <span style="color:#4c9a3a">Vendredi vert</span> le suit toujours<br>
+            <span style="color:#d03030">Samedi rouge</span>,<br>
+            <span style="color:#b0b0b0">Dimanche blanc</span>,<br>
+            C'est la joie pour tous les enfants !!</p>
+          </div>`,
       },
       {
         titre: "📖 Lecture : manuel Alfi p 19",
@@ -150,11 +162,37 @@
         ],
       },
 
-      // Poésie
+      // Poésie (à apprendre jusqu'à « repose »)
+      {
+        type: "histoire",
+        titre: "🎵 Écoute la poésie",
+        texte: "La semaine en couleurs. Le lundi est tout gris. Jaune clair est le mardi. Mais voici mercredi rose. On se repose !",
+      },
+      {
+        type: "qcm",
+        titre: "🌈 De quelle couleur ?",
+        consigne: "Souviens-toi de la poésie et choisis la bonne couleur.",
+        questions: [
+          { q: "Le lundi est tout…", choix: ["rose", "gris", "bleu"], bonne: 1 },
+          { q: "… clair est le mardi.", choix: ["Jaune", "Vert", "Rouge"], bonne: 0 },
+          { q: "Mais voici mercredi…", choix: ["blanc", "gris", "rose"], bonne: 2 },
+        ],
+      },
+      {
+        type: "trous",
+        titre: "✏️ Complète la poésie",
+        consigne: "Écris le mot qui manque puis clique sur Vérifier.",
+        phrases: [
+          "Le [lundi] est tout gris",
+          "Jaune clair est le [mardi]",
+          "Mais voici [mercredi] rose",
+          "On se [repose] !",
+        ],
+      },
       {
         type: "info",
-        titre: "🎵 Poésie « La semaine en couleurs »",
-        texte: "Récite la poésie à papa ou maman jusqu'à « repose ».",
+        titre: "🗣️ Récite",
+        texte: "Récite la poésie à papa ou maman jusqu'à « repose », sans regarder !",
       },
     ];
   </script>

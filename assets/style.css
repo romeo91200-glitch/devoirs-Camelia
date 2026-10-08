@@ -209,3 +209,7 @@ a { color: inherit; }
 .tableau .surligne td { background: #fff3a8; }
 
 [hidden] { display: none !important; }
+
+.poesie { background: #fdf0d5; border-radius: 12px; padding: 12px 16px; text-align: center; font-size: 1.25rem; line-height: 1.6; }
+.poesie .titre-poesie { font-weight: bold; font-size: 1.35rem; }
+.poesie .apres { opacity: .55; }
