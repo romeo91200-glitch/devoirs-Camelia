@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#ff6fa8">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/icon-192.png">
+  <title>Devoirs du 9 octobre</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="retour" href="../../">⬅ Retour aux dossiers</a>
+  <header class="entete">
+    <h1>Vendredi 9 octobre</h1>
+    <p>Appuie sur 🔊 pour écouter. C'est parti !</p>
+  </header>
+
+  <nav class="onglets">
+    <button type="button" data-onglet="devoirs" class="actif">📋 Les devoirs</button>
+    <button type="button" data-onglet="entrainement">🎮 Entraînement</button>
+  </nav>
+  <main id="devoirs" class="exercices"></main>
+  <main id="exercices" class="exercices" hidden></main>
+  <div id="score" class="score" hidden></div>
+
+  <script>
+    // Les devoirs tels qu'ils sont sur les photos (recopiés à l'identique).
+    window.DEVOIRS = [
+      {
+        titre: "📝 Pour le vendredi 9 octobre",
+        html: `<ul>
+          <li>Calcul mental (pochette) : <b>C6 + D6</b></li>
+          <li>Poésie <b>« La semaine en couleurs »</b> jusqu'à « repose »</li>
+          <li>Lecture : relire <b>p 19</b> du manuel Alfi</li>
+        </ul>`,
+      },
+      {
+        titre: "🔢 Calcul mental C6 et D6",
+        html: `<p><i>Les calculs se font de tête à l'oral (sans limite de temps mais en essayant d'être le plus rapide possible). Ne faites pas les listes en avance, l'entraînement doit être régulier et il suit une progression de travail en classe.</i></p>
+          <p>Thème : Construire les tables d'addition jusqu'à 10 – Lecture de nombres</p>
+          <p><b>Liste C :</b></p>
+          <p class="gros">1 + 5 = &nbsp;&nbsp; 4 + 4 =<br>3 + 6 = &nbsp;&nbsp; 2 + 5 =<br>5 + 9 = &nbsp;&nbsp; 3 + 2 =</p>
+          <p><b>Liste D :</b></p>
+          <p class="gros"><u>Lis</u> : 11 - 13 - 18 - 3 - 12 - 16 - 15 - 9 - 14 - 17 - 19</p>`,
+      },
+      {
+        titre: "🎵 Poésie « La semaine en couleurs »",
+        html: `<p>Le texte de la poésie n'était pas sur les photos. À apprendre jusqu'à « repose ».</p>`,
+      },
+      {
+        titre: "📖 Lecture : manuel Alfi p 19",
+        html: `<p class="gros">m M <span class="cursive">m M</span> &nbsp; — &nbsp; un <b>m</b>ur</p>
+          <p>m a → ma &nbsp;&nbsp; m i → mi<br>m u r → mur</p>
+          <p>1 œuf :</p>
+          <p class="gros">mé &nbsp;mu &nbsp;ma &nbsp;mi &nbsp;me &nbsp;mo &nbsp;ma &nbsp;mu</p>
+          <p>le mur • la mamie • un ami</p>
+          <p>Mila est <b>dans</b> la rue.</p>
+          <p>2 œufs :</p>
+          <p class="gros">mé &nbsp;mu &nbsp;ma &nbsp;mi &nbsp;me &nbsp;mo &nbsp;mal &nbsp;mor</p>
+          <p>le mur • la mamie • un ami • le mât • un mot</p>
+          <p><b>Dans</b> la rue, Mila a filmé un lama.</p>
+          <p>3 œufs :</p>
+          <p class="gros">mé &nbsp;mu &nbsp;ma &nbsp;mi &nbsp;me &nbsp;mo &nbsp;mal &nbsp;mor</p>
+          <p>le mur • la mare • un ami • la rame<br>la momie • la mamie</p>
+          <p><b>Dans</b> la rue, Mila a filmé un lama.<br>Amélie me murmure un mot.</p>
+          <p>Mot outil : <b>dans</b></p>
+          <p><i>QR code « Le mystère du ballon » : trop flou sur la photo pour être lu.</i></p>`,
+      },
+    ];
+
+    window.EXERCICES = [
+      // Calcul mental C6 (sans recopier les résultats)
+      {
+        type: "trous",
+        titre: "➕ Calcul mental (C6)",
+        consigne: "Calcule dans ta tête, écris le résultat puis clique sur Vérifier.",
+        phrases: ["1 + 5 = [6]", "4 + 4 = [8]", "3 + 6 = [9]", "2 + 5 = [7]", "5 + 9 = [14]", "3 + 2 = [5]"],
+      },
+      // Calcul mental D6 : lecture de nombres
+      {
+        type: "qcm",
+        titre: "🔢 Les nombres (D6)",
+        consigne: "Écoute le nombre avec 🔊 puis clique dessus.",
+        questions: [
+          { q: "", dire: "onze", choix: ["11", "1", "17"], bonne: 0 },
+          { q: "", dire: "treize", choix: ["30", "13", "3"], bonne: 1 },
+          { q: "", dire: "dix-huit", choix: ["8", "81", "18"], bonne: 2 },
+          { q: "", dire: "douze", choix: ["12", "2", "20"], bonne: 0 },
+          { q: "", dire: "seize", choix: ["6", "16", "60"], bonne: 1 },
+          { q: "", dire: "quinze", choix: ["5", "50", "15"], bonne: 2 },
+          { q: "", dire: "quatorze", choix: ["14", "4", "40"], bonne: 0 },
+          { q: "", dire: "dix-neuf", choix: ["9", "19", "91"], bonne: 1 },
+        ],
+      },
+      {
+        type: "info",
+        titre: "🗣️ À voix haute",
+        texte: "Lis ces nombres le plus vite possible à papa ou maman :<br><strong style='font-size:1.6rem;letter-spacing:.1em'>11 – 13 – 18 – 3 – 12 – 16 – 15 – 9 – 14 – 17 – 19</strong>",
+      },
+
+      // Lecture p 19 : la lettre du jour, seulement à l'oreille dans les consignes
+      {
+        type: "histoire",
+        titre: "📖 Écoute la page 19",
+        texte: "le mur. la mamie. un ami. le mât. un mot. la mare. la rame. la momie. Mila est dans la rue. Dans la rue, Mila a filmé un lama. Amélie me murmure un mot.",
+      },
+      {
+        type: "qcm",
+        titre: "👂 Quelle syllabe entends-tu ?",
+        consigne: "Écoute avec 🔊 puis clique sur la bonne syllabe.",
+        questions: [
+          { q: "", dire: "ma", choix: ["la", "ma", "ra"], bonne: 1 },
+          { q: "", dire: "mi", choix: ["mi", "mu", "li"], bonne: 0 },
+          { q: "", dire: "mo", choix: ["ro", "mi", "mo"], bonne: 2 },
+          { q: "", dire: "mu", choix: ["mu", "ma", "nu"], bonne: 0 },
+          { q: "", dire: "mal", choix: ["mol", "mal", "lam"], bonne: 1 },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🔤 Quel mot entends-tu ?",
+        consigne: "Écoute avec 🔊 puis clique sur le bon mot.",
+        questions: [
+          { q: "", dire: "la mamie", choix: ["la momie", "la mamie", "la mare"], bonne: 1 },
+          { q: "", dire: "la rame", choix: ["la rame", "la mare", "la rue"], bonne: 0 },
+          { q: "", dire: "le mât", choix: ["le mur", "un mot", "le mât"], bonne: 2 },
+          { q: "", dire: "la momie", choix: ["la momie", "la mamie", "un ami"], bonne: 0 },
+          { q: "", dire: "un mot", choix: ["le mât", "un mot", "le mur"], bonne: 1 },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🔍 Le mot outil",
+        consigne: "Écoute avec 🔊 puis clique sur le mot que tu entends.",
+        questions: [
+          { q: "", dire: "dans. Comme dans : Mila est dans la rue.", choix: ["des", "dans", "les"], bonne: 1 },
+          { q: "", dire: "dans. Comme dans : le chat est dans la boîte.", choix: ["dans", "et", "une"], bonne: 0 },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🦙 As-tu bien lu ?",
+        consigne: "Relis les phrases de la page 19 puis réponds.",
+        questions: [
+          { q: "Où est Mila ?", choix: ["Dans la rue", "Dans la mare", "Sur le mur"], bonne: 0 },
+          { q: "Qu'a filmé Mila ?", choix: ["Une momie", "Un lama", "Un mât"], bonne: 1 },
+          { q: "Que fait Amélie ?", choix: ["Elle rame", "Elle filme", "Elle murmure un mot"], bonne: 2 },
+        ],
+      },
+
+      // Poésie
+      {
+        type: "info",
+        titre: "🎵 Poésie « La semaine en couleurs »",
+        texte: "Récite la poésie à papa ou maman jusqu'à « repose ».",
+      },
+    ];
+  </script>
+  <script src="../../assets/exercices.js"></script>
+</body>
+</html>

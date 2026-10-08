@@ -4,7 +4,7 @@ Site statique (HTML/CSS/JS, sans build) publié sur Netlify depuis ce dépôt.
 
 ## Structure
 
-- `index.html` : page d'accueil, un dossier par jour. Le prochain dossier (aujourd'hui ou plus tard) clignote avec « Devoirs du jour ».
+- `index.html` : page d'accueil, un dossier par jour. Le prochain dossier (après aujourd'hui) clignote avec « Devoirs du jour ».
 - `assets/jours.js` : la liste des jours affichés sur l'accueil.
 - `assets/exercices.js` : moteur d'exercices partagé (QCM, texte à trous, vrai/faux, dictée avec 🔊, carte de consigne).
 - `assets/style.css` : styles communs.

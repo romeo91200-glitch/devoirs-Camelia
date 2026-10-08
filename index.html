@@ -26,8 +26,8 @@
     const fmt = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" });
 
     const jours = [...window.JOURS].sort((a, b) => b.date.localeCompare(a.date));
-    // Le dossier qui clignote : le prochain jour de devoirs (aujourd'hui ou plus tard).
-    const prochain = jours.filter(j => j.date >= today).map(j => j.date).sort()[0];
+    // Le dossier qui clignote : les devoirs à rendre le prochain jour (après aujourd'hui), qu'on fait ce soir.
+    const prochain = jours.filter(j => j.date > today).map(j => j.date).sort()[0];
     const zone = document.getElementById("dossiers");
 
     if (!jours.length) zone.innerHTML = "<p>Pas encore de devoirs ici.</p>";
