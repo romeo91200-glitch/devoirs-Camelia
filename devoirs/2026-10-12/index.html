@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#ff6fa8">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/icon-192.png">
+  <title>Devoirs du 12 octobre</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="retour" href="../../">⬅ Retour aux dossiers</a>
+  <header class="entete">
+    <h1>Lundi 12 octobre</h1>
+    <p>Appuie sur 🔊 pour écouter. C'est parti !</p>
+  </header>
+
+  <nav class="onglets">
+    <button type="button" data-onglet="devoirs" class="actif">📋 Les devoirs</button>
+    <button type="button" data-onglet="entrainement">🎮 Entraînement</button>
+  </nav>
+  <main id="devoirs" class="exercices"></main>
+  <main id="exercices" class="exercices" hidden></main>
+  <div id="score" class="score" hidden></div>
+
+  <script src="../../assets/lecons.js"></script>
+  <script>
+    // Les devoirs tels qu'ils sont sur les photos (recopiés à l'identique).
+    window.DEVOIRS = [
+      {
+        titre: "📝 Pour le lundi 12 octobre",
+        html: `<ul>
+          <li>Calcul mental (pochette) : <b>A7</b></li>
+          <li>Calcul : leçon <b>C8</b> – maisons du 8 au 9.</li>
+          <li>Langage : votre enfant vous raconte l'histoire « Le mystère du ballon » puis pouvez ensuite la réécouter avec lui grâce au QR code (porte-vues lecture)</li>
+          <li>Orthographe/encodage : leçon <b>O1</b> (porte-vues bleu) : <u>liste 5</u> « dans » + <b>dictée 9 « m »</b> à préparer</li>
+          <li>Français : leçons <b>G1 et G2 (savoir juste nommer les différents points)</b> (porte-vues bleu) : <mark>évaluation sur la phrase</mark></li>
+        </ul>
+        <p class="rappel">Signer le cahier d'activité Alfi, le cahier du jour, le fichier de numération + Rappel : papier orange de la coopérative à compléter svp</p>`,
+      },
+      {
+        titre: "🔢 Calcul mental A7 (liste A)",
+        html: `<p><i>Les calculs se font de tête à l'oral (sans limite de temps mais en essayant d'être le plus rapide possible). Ne faites pas les listes en avance, l'entraînement doit être régulier et il suit une progression de travail en classe.</i></p>
+          <p>Thème : Soustraire – Ranger des nombres dans l'ordre croissant</p>
+          <p class="gros">6 - 3 = &nbsp;&nbsp; 4 - 2 =<br>5 - 4 = &nbsp;&nbsp; 8 - 8 =<br>7 - 2 = &nbsp;&nbsp; 3 - 2 =</p>`,
+      },
+      { titre: "🏠 Calcul : leçon C8 (maisons du 8 au 9)", html: window.LECONS.C8 },
+      {
+        titre: "📖 Langage : « Le mystère du ballon »",
+        html: `<p style="text-align:center"><b><u>Le mystère du ballon</u></b></p>
+          <p>Après une bonne nuit de sommeil, Alfi qui n'a pas quitté son ballon, le prend sous son bras et décide d'aller chercher de quoi manger. Il se dirige vers une petite forêt, à la recherche de tendres feuilles. Soudain, en soulevant une branche, il découvre un essaim d'abeilles qui lui rappelle un mauvais souvenir (sa narine droite s'en souvient encore…). Effrayé, il recule et lâche son ballon qui tombe sur le sol.</p>
+          <p>CRRRRRACK ! Le ballon se fissure. Alfi s'approche et aperçoit une petite patte qui sort. Puis, une deuxième. Alfi comprend alors que ce mystérieux objet n'est pas ce qu'il croyait.</p>
+          <p><a href="https://ecole.nathan.fr/texte06_le_mystere_du_ballon" target="_blank" rel="noopener">🎧 Audio du QR code</a></p>`,
+      },
+      { titre: "🔍 Orthographe : leçon O1, liste 5", html: window.LECONS.O1(5) },
+      {
+        titre: "✏️ Dictée 9 « m »",
+        html: `<p>La liste de mots de la dictée 9 n'était pas sur les photos (voir la pochette). Le son « m » est celui de la page 19 du manuel Alfi : le mur, la mamie, un ami, la mare, la rame, la momie, un mot…</p>`,
+      },
+      { titre: "📏 Français : leçon G1", html: window.LECONS.G1 },
+      { titre: "❗ Français : leçon G2", html: window.LECONS.G2 },
+    ];
+
+    window.EXERCICES = [
+      // Calcul mental A7 : soustraire
+      {
+        type: "trous",
+        titre: "➖ Calcul mental (A7)",
+        consigne: "Calcule dans ta tête, écris le résultat puis clique sur Vérifier.",
+        phrases: ["6 - 3 = [3]", "4 - 2 = [2]", "5 - 4 = [1]", "8 - 8 = [0]", "7 - 2 = [5]", "3 - 2 = [1]"],
+      },
+
+      // C8 : maisons du 8 et du 9, avec les questions de la leçon
+      {
+        type: "trous",
+        titre: "🏠 La maison du 8",
+        consigne: "Combien faut-il ajouter pour faire 8 ?",
+        phrases: ["0 + [8] = 8", "1 + [7] = 8", "2 + [6] = 8", "3 + [5] = 8", "4 + [4] = 8", "6 + [2] = 8", "7 + [1] = 8"],
+      },
+      {
+        type: "trous",
+        titre: "🏠 La maison du 9",
+        consigne: "Combien faut-il ajouter pour faire 9 ?",
+        phrases: ["0 + [9] = 9", "1 + [8] = 9", "2 + [7] = 9", "3 + [6] = 9", "4 + [5] = 9", "5 + [4] = 9", "8 + [1] = 9"],
+      },
+      {
+        type: "qcm",
+        titre: "🏡 Qui habite dans la maison ?",
+        consigne: "Clique sur l'addition qui fait le bon nombre.",
+        questions: [
+          { q: "Laquelle fait 8 ?", choix: ["5 + 2", "5 + 3", "4 + 5"], bonne: 1 },
+          { q: "Laquelle fait 9 ?", choix: ["6 + 3", "6 + 2", "7 + 1"], bonne: 0 },
+          { q: "Laquelle fait 8 ?", choix: ["3 + 6", "2 + 5", "2 + 6"], bonne: 2 },
+          { q: "Laquelle fait 9 ?", choix: ["4 + 4", "2 + 7", "3 + 5"], bonne: 1 },
+        ],
+      },
+
+      // Langage : « Le mystère du ballon »
+      {
+        type: "histoire",
+        titre: "🐘 L'histoire : « Le mystère du ballon »",
+        lien: "https://ecole.nathan.fr/texte06_le_mystere_du_ballon",
+        texte: "Le mystère du ballon. Après une bonne nuit de sommeil, Alfi qui n'a pas quitté son ballon, le prend sous son bras et décide d'aller chercher de quoi manger. Il se dirige vers une petite forêt, à la recherche de tendres feuilles. Soudain, en soulevant une branche, il découvre un essaim d'abeilles qui lui rappelle un mauvais souvenir. Sa narine droite s'en souvient encore… Effrayé, il recule et lâche son ballon qui tombe sur le sol. CRRRRRACK ! Le ballon se fissure. Alfi s'approche et aperçoit une petite patte qui sort. Puis, une deuxième. Alfi comprend alors que ce mystérieux objet n'est pas ce qu'il croyait.",
+      },
+      {
+        type: "vraifaux",
+        titre: "📖 Vrai ou faux ?",
+        consigne: "Écoute avec 🔊 si tu veux.",
+        questions: [
+          { q: "Alfi part chercher de quoi manger.", dire: "Alfi part chercher de quoi manger.", vrai: true },
+          { q: "Alfi laisse son ballon à la maison.", dire: "Alfi laisse son ballon à la maison.", vrai: false },
+          { q: "Sous la branche, il y a des abeilles.", dire: "Sous la branche, il y a des abeilles.", vrai: true },
+          { q: "Le ballon tombe et se fissure.", dire: "Le ballon tombe et se fissure.", vrai: true },
+          { q: "Une petite main sort du ballon.", dire: "Une petite main sort du ballon.", vrai: false },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🐝 As-tu bien compris ?",
+        questions: [
+          { q: "Où va Alfi ?", choix: ["Au lac", "Dans une petite forêt", "À l'école"], bonne: 1 },
+          { q: "Que cherche Alfi ?", choix: ["Des tendres feuilles", "Des fruits", "Son copain"], bonne: 0 },
+          { q: "Pourquoi Alfi a-t-il peur ?", choix: ["Il voit un lion", "Il fait nuit", "Il voit des abeilles"], bonne: 2 },
+          { q: "Que sort du ballon ?", choix: ["De l'eau", "Une petite patte", "Un papillon"], bonne: 1 },
+        ],
+      },
+      {
+        type: "info",
+        titre: "🗣️ Raconte l'histoire",
+        texte: "Raconte l'histoire à papa ou maman, puis réécoutez-la ensemble avec le bouton 🎧.<ol><li>Que fait Alfi le matin ?</li><li>Que découvre-t-il sous la branche ?</li><li>Que se passe-t-il quand le ballon tombe ?</li><li>À ton avis, qu'y a-t-il dans le ballon ?</li></ol>",
+      },
+
+      // O1 liste 5 : le mot outil, seulement à l'oreille
+      {
+        type: "qcm",
+        titre: "🔍 Le mot outil (O1, liste 5)",
+        consigne: "Écoute avec 🔊 puis clique sur le mot que tu entends.",
+        questions: [
+          { q: "", dire: "dans. Comme dans : le chat est dans la boîte.", choix: ["des", "dans", "donc"], bonne: 1 },
+          { q: "", dire: "dans. Comme dans : Mila est dans la rue.", choix: ["dans", "les", "elle"], bonne: 0 },
+          { q: "", dire: "dans. Comme dans : il y a des abeilles dans la forêt.", choix: ["avec", "est", "dans"], bonne: 2 },
+        ],
+      },
+      {
+        type: "dictee",
+        titre: "✍️ J'écris le mot outil",
+        consigne: "Écoute la phrase avec 🔊 et écris le petit mot qu'on te demande.",
+        mots: [
+          { dire: "Le renard est dans sa tanière. Écris le mot : dans.", ecrire: "dans" },
+          { dire: "Alfi marche dans la forêt. Écris le mot : dans.", ecrire: "dans" },
+        ],
+      },
+
+      // Dictée 9 : le son « m » (mots de la page 19)
+      {
+        type: "dictee",
+        titre: "✏️ Petite dictée (dictée 9)",
+        consigne: "Écoute avec 🔊 et écris. Puis clique sur Vérifier.",
+        mots: [
+          { dire: "ma", ecrire: "ma" },
+          { dire: "mi", ecrire: "mi" },
+          { dire: "mo", ecrire: "mo" },
+          { dire: "le mur", ecrire: "le mur" },
+          { dire: "un ami", ecrire: "un ami" },
+          { dire: "la mamie", ecrire: "la mamie" },
+          { dire: "un mot", ecrire: "un mot" },
+        ],
+      },
+
+      // G1 et G2 : la phrase et les points
+      {
+        type: "qcm",
+        titre: "📏 Est-ce une phrase ?",
+        consigne: "Une phrase a du sens, une majuscule et un point.",
+        questions: [
+          { q: "Le chat dort sur le lit.", choix: ["C'est une phrase", "Ce n'est pas une phrase"], bonne: 0 },
+          { q: "lit sur dort chat le", choix: ["C'est une phrase", "Ce n'est pas une phrase"], bonne: 1 },
+          { q: "Alfi a un ballon.", choix: ["C'est une phrase", "Ce n'est pas une phrase"], bonne: 0 },
+        ],
+      },
+      {
+        type: "vraifaux",
+        titre: "✅ Vrai ou faux ?",
+        questions: [
+          { q: "Une phrase commence toujours par une majuscule.", vrai: true },
+          { q: "Une phrase se termine toujours par un point.", vrai: true },
+          { q: "Après un point, on met une minuscule.", vrai: false },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "❓ Comment s'appelle ce signe ?",
+        consigne: "Pour l'évaluation : il faut savoir nommer les différents points.",
+        questions: [
+          { q: "<span class='gros'>.</span>", choix: ["le point", "le point d'exclamation", "le point d'interrogation"], bonne: 0 },
+          { q: "<span class='gros'>?</span>", choix: ["le point", "le point d'exclamation", "le point d'interrogation"], bonne: 2 },
+          { q: "<span class='gros'>!</span>", choix: ["le point", "le point d'exclamation", "le point d'interrogation"], bonne: 1 },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🎭 Quel point à la fin ?",
+        consigne: "Écoute la phrase avec 🔊 puis choisis le bon point.",
+        questions: [
+          { q: "Où vas-tu …", dire: "Où vas-tu ?", choix: [".", "!", "?"], bonne: 2 },
+          { q: "Le chat miaule …", dire: "Le chat miaule.", choix: [".", "!", "?"], bonne: 0 },
+          { q: "Oh, j'ai peur …", dire: "Oh, j'ai peur !", choix: [".", "!", "?"], bonne: 1 },
+          { q: "Que manges-tu …", dire: "Que manges-tu ?", choix: [".", "!", "?"], bonne: 2 },
+          { q: "Je suis contente …", dire: "Je suis contente !", choix: [".", "!", "?"], bonne: 1 },
+        ],
+      },
+    ];
+  </script>
+  <script src="../../assets/exercices.js"></script>
+</body>
+</html>
