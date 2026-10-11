@@ -224,3 +224,39 @@ a { color: inherit; }
 .ponctuation { font-size: 1rem; }
 .ponctuation td:first-child { font-size: 2rem; width: 1.5em; }
 .ponctuation td:nth-child(2) { width: 30%; }
+
+/* ---------- Brouillon (moitié d'écran) ---------- */
+.bouton-brouillon {
+  position: fixed; left: 12px; bottom: 12px; z-index: 30;
+  font: inherit; font-weight: bold; font-size: 1rem;
+  padding: 10px 14px; border-radius: 999px; border: none;
+  background: var(--rose); color: #fff; box-shadow: 0 3px 10px rgba(0,0,0,.2); cursor: pointer;
+}
+.brouillon {
+  position: fixed; z-index: 20; background: #fff;
+  display: flex; flex-direction: column;
+  box-shadow: 0 0 14px rgba(0,0,0,.18);
+  right: 0; bottom: 0; left: 0; height: 50vh;           /* téléphone en hauteur : moitié du bas */
+}
+.brouillon .outils { display: flex; gap: 6px; padding: 6px; background: #f3eefe; flex-wrap: wrap; }
+.brouillon .outils button {
+  font-size: 1.2rem; width: 2.4em; height: 2.4em; border-radius: 10px;
+  border: 2px solid transparent; background: #fff; cursor: pointer;
+}
+.brouillon .outils button.actif { border-color: var(--violet); }
+.brouillon .outils [data-fermer] { margin-left: auto; }
+.brouillon canvas {
+  flex: 1; width: 100%; min-height: 0; touch-action: none; cursor: crosshair;
+  background-color: #fff;
+  background-image: linear-gradient(#dfe6f5 1px, transparent 1px), linear-gradient(90deg, #dfe6f5 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+body.avec-brouillon { padding-bottom: calc(50vh + 16px); }
+body.avec-brouillon .bouton-brouillon { bottom: calc(50vh + 12px); }
+body.avec-brouillon .score { bottom: calc(50vh + 12px); }
+
+@media (min-aspect-ratio: 1/1) {                        /* écran large : moitié de droite */
+  .brouillon { top: 0; left: auto; width: 50vw; height: auto; }
+  body.avec-brouillon { padding-bottom: 16px; padding-right: calc(50vw + 16px); }
+  body.avec-brouillon .bouton-brouillon, body.avec-brouillon .score { bottom: 12px; }
+}

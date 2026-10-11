@@ -7,6 +7,7 @@ Site statique (HTML/CSS/JS, sans build) publié sur Netlify depuis ce dépôt.
 - `index.html` : page d'accueil, un dossier par jour. Le prochain dossier (après aujourd'hui) clignote avec « Devoirs du jour ».
 - `assets/jours.js` : la liste des jours affichés sur l'accueil.
 - `assets/exercices.js` : moteur d'exercices partagé (QCM, texte à trous, vrai/faux, dictée avec 🔊, carte de consigne).
+- `assets/brouillon.js` : bouton « ✏️ Brouillon » qui ouvre une feuille à carreaux sur la moitié de l'écran pour écrire au doigt ou à la souris. Chaque page de jour le charge après `exercices.js`.
 - `assets/style.css` : styles communs.
 - `devoirs/AAAA-MM-JJ/index.html` : les exercices pour le jour où les devoirs sont à rendre.
 
