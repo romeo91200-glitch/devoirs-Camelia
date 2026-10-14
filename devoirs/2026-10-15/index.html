@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#ff6fa8">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/icon-192.png">
+  <title>Devoirs du 15 octobre</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="retour" href="../../">⬅ Retour aux dossiers</a>
+  <header class="entete">
+    <h1>Jeudi 15 octobre</h1>
+    <p>Appuie sur 🔊 pour écouter. C'est parti !</p>
+  </header>
+
+  <nav class="onglets">
+    <button type="button" data-onglet="devoirs" class="actif">📋 Les devoirs</button>
+    <button type="button" data-onglet="entrainement">🎮 Entraînement</button>
+  </nav>
+  <main id="devoirs" class="exercices"></main>
+  <main id="exercices" class="exercices" hidden></main>
+  <div id="score" class="score" hidden></div>
+
+  <script src="../../assets/lecons.js"></script>
+  <script>
+    // Les devoirs tels qu'ils sont sur les photos (recopiés à l'identique).
+    window.DEVOIRS = [
+      {
+        titre: "📝 Pour le jeudi 15/09 (15 octobre)",
+        html: `<p><i>La feuille indique « 15/09 » : c'est bien le jeudi 15 octobre.</i></p>
+          <ul>
+          <li>Calcul mental (pochette) : <b>D7</b></li>
+          <li>Lecture : relire <b>p 22</b> du manuel Alfi</li>
+          <li>Poésie : récitation « La semaine en couleurs »</li>
+          <li>Nombres : évaluation sur les nombres jusqu'à 19 ;<br>Revoir <b>N1 à N4, N6 + N8</b></li>
+        </ul>
+        <p class="rappel">PAS de sport => fête des anniversaires d'octobre</p>`,
+      },
+      {
+        titre: "🔢 Calcul mental D7 (liste D)",
+        html: `<p><i>Les calculs se font de tête à l'oral (sans limite de temps mais en essayant d'être le plus rapide possible). Ne faites pas les listes en avance, l'entraînement doit être régulier et il suit une progression de travail en classe.</i></p>
+          <p>Thème : Soustraire – Ranger des nombres dans l'ordre croissant</p>
+          <p class="gros">Range du plus petit au plus grand :<br>19 - 9 - 15 - 18</p>`,
+      },
+      {
+        titre: "📖 Lecture : manuel Alfi p 22",
+        html: `<p class="gros">ch <span class="cursive">ch</span> &nbsp; — &nbsp; un <b>ch</b>at</p>
+          <p>ch u → chu &nbsp;&nbsp; ch i → chi<br>ch a r → char</p>
+          <p>1 œuf :</p>
+          <p class="gros">ché &nbsp;che &nbsp;cha &nbsp;chu &nbsp;chi &nbsp;cho &nbsp;cha &nbsp;chu</p>
+          <p>chéri • riche • la marche</p>
+          <p>Il y a un chat.</p>
+          <p>2 œufs :</p>
+          <p class="gros">ché &nbsp;che &nbsp;cha &nbsp;chu &nbsp;chi &nbsp;cho &nbsp;char &nbsp;chu</p>
+          <p>fâché • riche • la marche • chéri • la ruche</p>
+          <p>Il y a un chat sur l'affiche.</p>
+          <p>3 œufs :</p>
+          <p class="gros">ché &nbsp;che &nbsp;cha &nbsp;chu &nbsp;chi &nbsp;cho &nbsp;char &nbsp;chu</p>
+          <p>fâché • riche • la marche • l'affiche<br>la ruche • le charme</p>
+          <p>Il y a un chat sur l'affiche.<br>Charles marche dans l'allée.</p>
+          <p><i>En bas de la page : QR code « La surprise » (coupé sur la photo, il n'a pas pu être lu).</i></p>`,
+      },
+      {
+        titre: "🎵 Poésie : récitation « La semaine en couleurs »",
+        html: `<div class="poesie">
+            <p class="titre-poesie">La semaine en couleurs !!</p>
+            <p>Le <span style="color:#8a8a8a">lundi</span> est tout <span style="color:#8a8a8a">gris</span><br>
+            <span style="color:#d4b000">Jaune</span> clair est le <span style="color:#d4b000">mardi</span><br>
+            Mais voici <span style="color:#e07aa0">mercredi rose</span><br>
+            On se repose !<br>
+            <span style="color:#5b9bd5">Jeudi bleu</span> vient à son tour<br>
+            <span style="color:#4c9a3a">Vendredi vert</span> le suit toujours<br>
+            <span style="color:#d03030">Samedi rouge</span>,<br>
+            <span style="color:#b0b0b0">Dimanche blanc</span>,<br>
+            C'est la joie pour tous les enfants !!</p>
+          </div>`,
+      },
+      { titre: "🔢 Nombres : leçon N1", html: window.LECONS.N1 },
+      { titre: "🔢 Nombres : leçon N2", html: window.LECONS.N2 },
+      { titre: "🔢 Nombres : leçon N3", html: window.LECONS.N3 },
+      { titre: "🔢 Nombres : leçon N4", html: window.LECONS.N4 },
+      { titre: "🔢 Nombres : leçon N6", html: window.LECONS.N6 },
+      { titre: "🔢 Nombres : leçon N8", html: window.LECONS.N8 },
+    ];
+
+    window.EXERCICES = [
+      // Calcul mental D7 : ranger
+      {
+        type: "trous",
+        titre: "📶 Calcul mental (D7)",
+        consigne: "Range 19 - 9 - 15 - 18 du plus petit au plus grand.",
+        phrases: ["1er : [9]", "2e : [15]", "3e : [18]", "4e : [19]"],
+      },
+
+      // Lecture p 22 : le son « ch »
+      {
+        type: "histoire",
+        titre: "📖 Écoute la page 22",
+        texte: "ché, che, cha, chu, chi, cho, char, chu. Fâché. Riche. La marche. L'affiche. La ruche. Le charme. Il y a un chat sur l'affiche. Charles marche dans l'allée.",
+      },
+      {
+        type: "qcm",
+        titre: "👂 Quel mot entends-tu ?",
+        consigne: "Appuie sur 🔊, écoute bien puis choisis le mot.",
+        questions: [
+          { q: "Mot 1", dire: "chat", choix: ["rat", "chat", "mat"], bonne: 1 },
+          { q: "Mot 2", dire: "la ruche", choix: ["la ruche", "la rue", "la ruse"], bonne: 0 },
+          { q: "Mot 3", dire: "riche", choix: ["rire", "ride", "riche"], bonne: 2 },
+          { q: "Mot 4", dire: "la marche", choix: ["la mare", "la marche", "la mère"], bonne: 1 },
+          { q: "Mot 5", dire: "chéri", choix: ["chéri", "chérie", "méri"], bonne: 0 },
+        ],
+      },
+      {
+        type: "dictee",
+        titre: "✏️ Écris les syllabes",
+        consigne: "Appuie sur 🔊 et écris la syllabe que tu entends.",
+        mots: [{ dire: "cha", ecrire: "cha" }, { dire: "chi", ecrire: "chi" }, { dire: "cho", ecrire: "cho" }, { dire: "chu", ecrire: "chu" }],
+      },
+      {
+        type: "vraifaux",
+        titre: "🐱 Vrai ou faux ?",
+        consigne: "Relis les phrases de la page 22.",
+        questions: [
+          { q: "Il y a un chat sur l'affiche.", vrai: true },
+          { q: "Il y a un chien sur l'affiche.", vrai: false },
+          { q: "Charles marche dans l'allée.", vrai: true },
+          { q: "Charles court dans la rue.", vrai: false },
+        ],
+      },
+
+      // Poésie complète
+      {
+        type: "histoire",
+        titre: "🎵 Écoute la poésie",
+        texte: "La semaine en couleurs. Le lundi est tout gris. Jaune clair est le mardi. Mais voici mercredi rose. On se repose ! Jeudi bleu vient à son tour. Vendredi vert le suit toujours. Samedi rouge, Dimanche blanc, C'est la joie pour tous les enfants !",
+      },
+      {
+        type: "qcm",
+        titre: "🌈 De quelle couleur ?",
+        consigne: "Souviens-toi de la poésie et choisis la bonne couleur.",
+        questions: [
+          { q: "Jeudi…", choix: ["vert", "bleu", "rouge"], bonne: 1 },
+          { q: "Vendredi…", choix: ["vert", "gris", "blanc"], bonne: 0 },
+          { q: "Samedi…", choix: ["rose", "jaune", "rouge"], bonne: 2 },
+          { q: "Dimanche…", choix: ["blanc", "bleu", "gris"], bonne: 0 },
+        ],
+      },
+      {
+        type: "trous",
+        titre: "✏️ Complète la poésie",
+        consigne: "Écris le mot qui manque puis clique sur Vérifier.",
+        phrases: [
+          "Jeudi bleu vient à son [tour]",
+          "Vendredi vert le suit [toujours]",
+          "Samedi [rouge],",
+          "Dimanche [blanc],",
+          "C'est la joie pour tous les [enfants] !!",
+        ],
+      },
+      {
+        type: "info",
+        titre: "🗣️ Récite",
+        texte: "Récite toute la poésie à papa ou maman, sans regarder !",
+      },
+
+      // Nombres jusqu'à 19 (N1 à N4, N6, N8)
+      {
+        type: "qcm",
+        titre: "👂 Quel nombre entends-tu ? (N1, N4)",
+        consigne: "Appuie sur 🔊 puis choisis le bon nombre.",
+        questions: [
+          { q: "Nombre 1", dire: "treize", choix: ["3", "13", "12"], bonne: 1 },
+          { q: "Nombre 2", dire: "seize", choix: ["16", "6", "17"], bonne: 0 },
+          { q: "Nombre 3", dire: "quatorze", choix: ["4", "40", "14"], bonne: 2 },
+          { q: "Nombre 4", dire: "dix-sept", choix: ["17", "7", "10"], bonne: 0 },
+          { q: "Nombre 5", dire: "douze", choix: ["2", "12", "20"], bonne: 1 },
+          { q: "Nombre 6", dire: "quinze", choix: ["5", "50", "15"], bonne: 2 },
+        ],
+      },
+      {
+        type: "dictee",
+        titre: "✏️ Dictée de nombres (N2)",
+        consigne: "Appuie sur 🔊 et écris le nombre avec des chiffres.",
+        mots: [{ dire: "onze", ecrire: "11" }, { dire: "dix-huit", ecrire: "18" }, { dire: "neuf", ecrire: "9" }, { dire: "dix-neuf", ecrire: "19" }, { dire: "quinze", ecrire: "15" }],
+      },
+      {
+        type: "trous",
+        titre: "➕ 10 + combien ? (N4)",
+        consigne: "Écris le nombre.",
+        phrases: ["10 + 3 = [13]", "10 + 6 = [16]", "10 + 9 = [19]", "10 + 1 = [11]", "10 + [4] = 14", "10 + [8] = 18"],
+      },
+      {
+        type: "trous",
+        titre: "📦 Dizaines et unités (N6)",
+        consigne: "Combien de dizaines (d) et d'unités (u) ?",
+        phrases: ["14 = [1] d et [4] u", "17 = [1] d et [7] u", "19 = [1] d et [9] u", "1 dizaine = [10] unités", "1 d et 2 u = [12]"],
+      },
+      {
+        type: "qcm",
+        titre: "🍴 Plus, moins, autant (N3)",
+        consigne: "Compte bien puis choisis.",
+        questions: [
+          { q: "🍎🍎🍎 et 🍌🍌🍌🍌🍌 : il y a … de pommes que de bananes.", choix: ["plus", "moins", "autant"], bonne: 1 },
+          { q: "⭐⭐⭐⭐ et 🌙🌙 : il y a … d'étoiles que de lunes.", choix: ["plus", "moins", "autant"], bonne: 0 },
+          { q: "🐟🐟🐟 et 🐸🐸🐸 : il y a … de poissons que de grenouilles.", choix: ["plus", "moins", "autant"], bonne: 2 },
+        ],
+      },
+      {
+        type: "trous",
+        titre: "🐊 < , > ou = ? (N8)",
+        consigne: "Écris le bon signe : < ou > ou =. La pointe montre toujours le plus petit nombre.",
+        phrases: ["12 [<] 17", "19 [>] 9", "15 [=] 15", "8 [<] 18", "16 [>] 13", "10 + 4 [=] 14"],
+      },
+      {
+        type: "trous",
+        titre: "📶 Ranger (N8)",
+        consigne: "Range 16 - 11 - 19 - 14 dans l'ordre croissant (du plus petit au plus grand).",
+        phrases: ["[11] - [14] - [16] - [19]"],
+      },
+      {
+        type: "trous",
+        titre: "📉 Ranger (N8)",
+        consigne: "Range 12 - 18 - 10 - 15 dans l'ordre décroissant (du plus grand au plus petit).",
+        phrases: ["[18] - [15] - [12] - [10]"],
+      },
+    ];
+  </script>
+  <script src="../../assets/exercices.js"></script>
+  <script src="../../assets/brouillon.js"></script>
+</body>
+</html>

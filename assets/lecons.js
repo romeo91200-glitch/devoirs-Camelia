@@ -49,5 +49,51 @@
         <tr><td>!</td><td><b>Le point d'exclamation</b></td><td>Il marque la fin d'une <b>phrase impérative</b> ou à la <b>forme exclamative</b>.<br>Il marque des sentiments : <b>peur, joie, colère, étonnement…</b> La voix doit bien marquer l'intonation qui correspond.<br><span class="cursive">Je suis heureuse !</span> &nbsp; Assis-toi !</td></tr>
         <tr><td>?</td><td><b>Le point d'interrogation</b></td><td>Il marque la fin d'une <b>phrase interrogative</b>.<br>Il sert à <u>poser une question</u>, à <b>interroger</b>.<br><span class="cursive">Que manges-tu ? / Où vas-tu ?</span></td></tr>
       </table>`,
+
+    N1: `<p class="titre-lecon">Les nombres de 1 à 10 <span>N 1</span></p>
+      <table class="tableau nombres">${["un","deux","trois","quatre","cinq","six","sept","huit","neuf","dix"].map((m, i) =>
+        `<tr><td>${i + 1}</td><td class="cursive">${m}</td><td>${m}</td><td>${"●".repeat(i + 1)}</td></tr>`).join("")}</table>
+      <p>① - ② - ③ - ④ - ⑤ - ⑥ - ⑦ - ⑧ - ⑨ - ⑩</p>`,
+
+    N2: `<p class="titre-lecon">Les chiffres <span>N 2</span></p>
+      <p class="chiffres">0 1 2 3<br>4 5 6 7<br>8 9</p>
+      <p class="gros">0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9</p>`,
+
+    N3: `<p class="titre-lecon">Comparaison des nombres (1) <span>N 3</span></p>
+      <p><i>plus, moins, autant que</i></p>
+      <p class="gros">🔪🔪🔪🔪 &nbsp;&nbsp; 🍴🍴🍴🍴🍴🍴</p>
+      <p class="bulle">Il y a <b>plus</b> de fourchettes <b>que</b> de couteaux.</p>
+      <p class="bulle">Il y a <b>moins</b> de couteaux <b>que</b> de fourchettes.</p>
+      <p class="bulle">Il y a <b>autant</b> de tasses <b>que</b> de cuillères.</p>
+      <p class="gros">☕☕☕☕☕<br>🥄🥄🥄🥄🥄</p>`,
+
+    N4: `<p class="titre-lecon">Les nombres de 10 à 19 <span>N 4</span></p>
+      <table class="tableau">
+        <tr><td>10</td><td>🖐️🖐️</td><td class="cursive">dix</td><td>dix</td></tr>
+        ${["onze","douze","treize","quatorze","quinze","seize","dix-sept","dix-huit","dix-neuf"].map((m, i) =>
+          `<tr><td>${11 + i}</td><td>10 + ${i + 1}</td><td class="cursive">${m}</td><td>${m}</td></tr>`).join("")}
+      </table>`,
+
+    N6: `<p class="titre-lecon">Dénombrer en utilisant le groupement par 10 <span>N 6</span></p>
+      <p><u>Pour dénombrer une collection :</u><br>
+      - Je fais des groupes de 10 unités.<br>
+      - J'échange chaque paquet de 10 unités contre 1 dizaine.<br>
+      - Je compte les unités qui restent.</p>
+      <p><i><u>Exemple :</u></i> 43 billes.</p>
+      <table class="tableau du"><tr><td>d</td><td>u</td></tr><tr><td>4</td><td>3</td></tr></table>
+      <p>Je peux faire 4 paquets de 10 billes, que j'échange contre 4 dizaines. &nbsp; Il reste 3 billes seules.</p>
+      <p>Lola a une dizaine de crayons. Ils ne sont pas rangés.<br>
+      Sami a aussi une dizaine de crayons. Ils sont rangés dans une pochette.<br>
+      Une dizaine de crayons, c'est 10 crayons. <b>1 dizaine = 10 unités</b></p>
+      <p class="bulle"><b><u>Règle d'échange</u></b> : 10 unités = 1 dizaine</p>`,
+
+    N8: `<p class="titre-lecon">Comparer et ranger <span>N 8</span></p>
+      <p>Pour <b><u>comparer</u></b> des quantités, on utilise les symboles <b>&lt;</b>, <b>&gt;</b> et <b>=</b>.</p>
+      <p class="gros">🐘 &gt; 🐭 &nbsp;&nbsp;&nbsp; 10 &lt; 23</p>
+      <p>La pointe montre toujours le plus petit nombre.</p>
+      <p><b>&lt;</b> plus petit : 3 &lt; 5 &nbsp;&nbsp; <b>=</b> égal : 4 = 3 + 1 &nbsp;&nbsp; <b>&gt;</b> plus grand : 5 &gt; 3</p>
+      <p><b>Ranger</b> les nombres du plus petit au plus grand, c'est ranger les quantités qu'ils représentent dans <u>l'ordre croissant</u>.</p>
+      <p><b>Ranger</b> les nombres du plus grand au plus petit, c'est ranger les quantités qu'ils représentent dans <u>l'ordre décroissant</u>.</p>
+      <p>L'ordre croissant : 🐭 🦁 🦒 &nbsp;&nbsp; L'ordre décroissant : 🦒 🦁 🐭</p>`,
   };
 })();
