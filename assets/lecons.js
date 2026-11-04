@@ -95,5 +95,55 @@
       <p><b>Ranger</b> les nombres du plus petit au plus grand, c'est ranger les quantités qu'ils représentent dans <u>l'ordre croissant</u>.</p>
       <p><b>Ranger</b> les nombres du plus grand au plus petit, c'est ranger les quantités qu'ils représentent dans <u>l'ordre décroissant</u>.</p>
       <p>L'ordre croissant : 🐭 🦁 🦒 &nbsp;&nbsp; L'ordre décroissant : 🦒 🦁 🐭</p>`,
+
+    C1: `<p class="titre-lecon">Additionner <span>C 1</span></p>
+      <p><b>Additionner</b> ça veut dire <b><u>ajouter</u></b> une quantité avec une ou des autre(s). La quantité <b>augmente</b>.</p>
+      <p>Lorsque <b>j'ajoute</b> des objets, j'utilise le signe <b style="color:#d03030">+</b> (plus).</p>
+      <p class="gros" style="text-align:center">⚪⚪⚪⚪ <span style="color:#d03030">+3</span> ⇨ ⚪⚪⚪⚪⚫⚫⚫<br>4 + 3 = 7</p>
+      <p>Pour écrire le calcul correspondant, il suffit d'écrire le nombre d'objet du début, celui qu'on ajoute et écrire le tout séparé par le signe <b>+</b>. Cela s'appelle <b><u>une addition</u></b>.</p>
+      <p>Le résultat d'une addition est <b><u>une somme</u></b>, on l'écrit après le symbole <b>« égal à »</b> &nbsp; 4 + 3 = <b>⑦</b></p>
+      <p>Pour trouver <b>la somme</b> après avoir ajouté des choses on peut :</p>
+      <p class="bulle"><b>Dessiner et tout recompter.</b> <i>C'est la procédure la plus longue !</i><br>
+        <i><u>Exemple</u> : J'ai 4 jetons. J'en ajoute 3. Je les dessine, je compte tout : j'ai 7 en tout.</i></p>
+      <p class="bulle"><b>Utiliser la bande numérique.</b><br>
+        <i><u>Ex</u> : J'ai 4 jetons. J'en ajoute 3. Je pars du nombre 4, et j'avance de 3 cases. J'arrive sur le 7.</i><br>
+        <span class="gros">1 2 3 ④ 5 6 <mark>7</mark> 8</span></p>
+      <p class="bulle"><b>Utiliser les doigts et/ou calculer de tête.</b><br>
+        <i><u>Ex</u> : J'ai 4 jetons. J'en ajoute 3. Je pars du nombre 4 dans ma tête et je continue de compter en levant 3 doigts un par un. J'arrive sur le nombre 7.</i> &nbsp; 💭4 → 5 → 6 → 7</p>`,
+
+    C2: `<p class="titre-lecon">Soustraire <span>C 2</span></p>
+      <p><b>Soustraire</b> ça veut dire <b><u>enlever</u></b> une quantité d'une autre. La quantité <b>diminue</b>.</p>
+      <p>Lorsque <b>je retire</b> des objets, j'utilise le signe <b style="color:#1d4ed8">−</b> (moins).</p>
+      <p class="gros" style="text-align:center">⚪⚪⚪⚪⚪ <span style="color:#1d4ed8">−1</span> = ⚪⚪⚪⚪<br>5 − 1 = 4</p>
+      <p>Pour écrire le calcul correspondant, il suffit d'écrire le nombre d'objet du début, celui qu'on retire et écrire le tout séparé par le signe <b>−</b>. Cela s'appelle <b><u>une soustraction</u></b>.</p>
+      <p>Le résultat d'une soustraction est <b><u>une différence</u></b>, on l'écrit après le symbole <b>« égal à »</b> &nbsp; 5 - 1 = <b>④</b></p>
+      <p>Pour trouver <b>la différence</b> (le résultat) après avoir enlevé des choses on peut :</p>
+      <p class="bulle"><b>Barrer et tout recompter.</b><br>
+        <i><u>Exemple</u> : J'ai 8 jetons. J'en enlève 3. Je les barre et je compte ce qu'il reste : 5 jetons.</i></p>
+      <p class="bulle"><b>Utiliser la bande numérique.</b><br>
+        <i><u>Ex</u> : J'ai 8 jetons. J'en enlève 3. Je pars du nombre 8 et je recule de 3 cases. J'arrive sur le 5.</i><br>
+        <span class="gros">1 2 3 4 <mark>5</mark> 6 7 ⑧ 9</span></p>
+      <p class="bulle"><b>Utiliser les doigts.</b><br>
+        <i><u>Ex</u> : J'ai 8 jetons. J'en enlève 3. Je pars du nombre 8 dans ma tête, et je décompte en levant 3 doigts au fur et à mesure. J'arrive à 5.</i> &nbsp; 💭8 → 7 → 6 → 5</p>`,
+
+    C3: `<p class="titre-lecon">Ajouter 1, enlever 1 <span>C 3</span></p>
+      <p class="bulle"><b>Ajouter 1</b> : C'est « dire » le nombre <b style="color:#1d4ed8">suivant</b>.<br>
+        <span class="gros">8 9 10 11 12 13 14 ⑮ → <mark>16</mark> 17 18 19 20 21 22</span><br>
+        <i style="color:#d03030">Exemple : 15 + 1 = 16</i></p>
+      <p class="bulle"><b>Retrancher 1</b> : C'est « dire » le nombre <b style="color:#1d4ed8">juste avant</b>.<br>
+        <span class="gros">8 9 10 11 <mark>12</mark> ← ⑬ 14 15 16 17 18 19 20 21 22</span><br>
+        <i style="color:#d03030">Exemple : 13 - 1 = 12</i></p>`,
+
+    C4: `<p class="titre-lecon">Les doubles <span>C 4</span></p>
+      <p>Le double c'est quand on ajoute deux fois le même nombre.</p>
+      <p class="gros" style="columns:2">1 + 1 = 2<br>2 + 2 = 4<br>3 + 3 = 6<br>4 + 4 = 8<br>5 + 5 = 10<br>6 + 6 = 12<br>7 + 7 = 14<br>8 + 8 = 16<br>9 + 9 = 18<br>10 + 10 = 20</p>
+      <p class="cursive">❤️ à connaître par cœur</p>`,
+
+    MOITIES: `<p class="titre-lecon">Les moitiés <span></span></p>
+      <p>Quand on connaît les doubles, on retrouve très vite les moitiés.<br>6 + 6 = 12 &nbsp; 12 est le double de 6. → 6 est la moitié de 12.</p>
+      <p>On se sert des moitiés dans des situations équitables.</p>
+      <p class="bulle">Si je veux te donner la moitié de mes bonbons, je partage en 2 parts égales. La moitié de 8, c'est 4.</p>
+      <table class="tableau"><tr><td>2</td><td>La moitié de 2, c'est 1</td></tr><tr><td>4</td><td>La moitié de 4, c'est 2</td></tr><tr><td>6</td><td>La moitié de 6, c'est 3</td></tr><tr><td>8</td><td>La moitié de 8, c'est 4</td></tr><tr><td>10</td><td>La moitié de 10, c'est 5</td></tr><tr><td>20</td><td>La moitié de 20, c'est 10</td></tr></table>
+      <p><i>Le bord droit de la leçon est coupé sur la photo : quelques mots sont devinés.</i></p>`,
   };
 })();
