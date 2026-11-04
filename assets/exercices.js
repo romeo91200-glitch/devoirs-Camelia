@@ -233,5 +233,5 @@
   (window.EXERCICES || []).forEach(exo => rendus[exo.type](exo));
   majScore();
 
-  if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("../../sw.js");
 })();

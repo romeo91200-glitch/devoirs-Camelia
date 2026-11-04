@@ -16,6 +16,10 @@ Site statique (HTML/CSS/JS, sans build) publié sur Netlify depuis ce dépôt.
 1. Copier un dossier existant (ex. `devoirs/2026-10-08/`) vers `devoirs/AAAA-MM-JJ/`, remplacer `window.DEVOIRS` (onglet « Les devoirs » : le travail recopié tel quel depuis les photos) et `window.EXERCICES` (onglet « Entraînement »).
 2. Ajouter `{ date: "AAAA-MM-JJ", titre: "..." }` dans `assets/jours.js`.
 
+## Hébergement
+
+Tous les liens sont relatifs : le site marche à la racine d'un domaine (Netlify, Cloudflare Pages) comme dans un sous-dossier (GitHub Pages : `https://<compte>.github.io/devoirs-camelia/`). Garder des liens relatifs dans les nouvelles pages.
+
 ## Netlify
 
 Aucune commande de build, dossier de publication : la racine du dépôt (voir `netlify.toml`).
