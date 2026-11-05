@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="theme-color" content="#ff6fa8">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="icon" href="../../icons/icon-192.png">
+  <title>Devoirs du 6 novembre</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="retour" href="../../">⬅ Retour aux dossiers</a>
+  <header class="entete">
+    <h1>Vendredi 6 novembre</h1>
+    <p>Appuie sur 🔊 pour écouter. C'est parti !</p>
+  </header>
+
+  <nav class="onglets">
+    <button type="button" data-onglet="devoirs" class="actif">📋 Les devoirs</button>
+    <button type="button" data-onglet="entrainement">🎮 Entraînement</button>
+  </nav>
+  <main id="devoirs" class="exercices"></main>
+  <main id="exercices" class="exercices" hidden></main>
+  <div id="score" class="score" hidden></div>
+
+  <script src="../../assets/lecons.js"></script>
+  <script>
+    const syllabes = [
+      ["mor", "rou", "ché", "fa"], ["as", "mal", "lou", "che"], ["fo", "sa", "mo", "sou"], ["lé", "or", "ri", "fi"],
+      ["si", "fu", "lo", "me"], ["chi", "os", "fé", "nu"], ["chou", "cho", "mu", "se"], ["for", "le", "our", "char"],
+      ["re", "su", "ul", "ouf"], ["su", "ur", "al", "sé"], ["cha", "fe", "il", "ar"], ["fou", "chu", "mi", "mou"],
+      ["af", "four", "so", "mé"], ["if", "lu", "mol", "sal"],
+    ];
+    const mots = [
+      ["la roue", "chéri", "le mur", "lire", "la fée"],
+      ["salé", "le loup", "riche", "la mamie", "le ressort"],
+      ["un sofa", "la folie", "salé", "un sirop", "la marche"],
+      ["la souris", "un ami", "le refus", "un os", "le sol"],
+      ["la série", "un safari", "la file", "le mât", "fâché"],
+      ["un chou", "fort", "rire", "un mot", "la ruche"],
+      ["un ours", "l'affiche", "la momie", "il râle", "un fil"],
+      ["l'amour", "le charme", "la mare", "un fossé", "un lis"],
+    ];
+    const tableau = lignes => `<table class="tableau lecture">${lignes.map(l => `<tr>${l.map(m => `<td>${m}</td>`).join("")}</tr>`).join("")}</table>`;
+    const leonard = {
+      1: "Alfi et Dina saluent Léonard le renard. C'est un ami. « Là ! Un loup ! » hurle Dina. Alfi, Dina et Léonard fuient.",
+      2: "C'est la nuit. Alfi et Dina saluent Léonard le renard. C'est un ami. Il est roux. « Là ! Un loup ! » hurle Dina. Alors, Alfi, Dina et Léonard fuient.",
+      3: "C'est la nuit, la Lune luit. Alfi et Dina saluent Léonard le renard. C'est un ami. Sa fourrure est rousse. Affamés, Alfi, Dina et Léonard se nourrissent : ils finissent un ananas. « Là ! Un loup ! » hurle Dina. Alors, Alfi, Dina et Léonard fuient.",
+    };
+
+    // Les devoirs tels qu'ils sont sur les photos (recopiés à l'identique).
+    window.DEVOIRS = [
+      {
+        titre: "📝 Pour le vendredi 06/11",
+        html: `<ul>
+          <li>Calcul mental (pochette) : <b>C1</b></li>
+          <li>Lecture : relire <b>p 25</b> du manuel Alfi</li>
+          <li>Orthographe/encodage : <b>dictée 1 « n »</b> à préparer (pochette)</li>
+          <li>Nombre : leçon <b>N6</b></li>
+        </ul>
+        <p class="rappel">Halloween : costume si l'enfant le souhaite</p>`,
+      },
+      {
+        titre: "🔢 Calcul mental C1 (liste C, période 2)",
+        html: `<p><i>Les calculs se font de tête à l'oral (sans limite de temps mais en essayant d'être le plus rapide possible). Ne faites pas les listes en avance, l'entraînement doit être régulier et il suit une progression de travail en classe.</i></p>
+          <p>Thème : Connaissance des nombres jusqu'à 19 – Construire les tables d'addition jusqu'à 10</p>
+          <p class="gros"><u>Lis</u> : 15 - 9 - 18 - 11 - 12 - 16 - 13 - 8 - 14 - 17 - 19</p>`,
+      },
+      {
+        titre: "📖 Lecture : manuel Alfi p 25 « Léonard le renard »",
+        html: `<p class="titre-lecon"><span class="cursive">Léonard le renard</span><span>Dina</span></p>
+          <p>1 œuf :</p><p class="gros">${leonard[1].replace("C'est un ami. ", "<br>C'est un ami.<br>").replace("Dina. Alfi", "Dina.<br>Alfi")}</p>
+          <p>2 œufs :</p><p class="gros">${leonard[2]}</p>
+          <p>3 œufs :</p><p class="gros">${leonard[3]}</p>`,
+      },
+      {
+        titre: "✏️ Dictée 1 « n » (dictées période 2)",
+        html: `<p class="cursive">Le groupe 🥚 apprend la première colonne + la colonne mots outils.<br>
+          Le groupe 🥚🥚 apprend la première + la deuxième colonne + la colonne mots outils.<br>
+          Le groupe 🥚🥚🥚 apprend la deuxième + la troisième colonne + la colonne mots outils.</p>
+          <table class="tableau dictee-n"><tr><td>🥚</td><td class="cursive gros">na - nu - ni - né</td></tr>
+          <tr><td>+ 🥚🥚</td><td class="cursive gros">la lune - une niche</td></tr>
+          <tr><td>+ 🥚🥚🥚</td><td class="cursive gros">un numéro<br><span style="color:#d03030">Il y a</span> un animal.</td></tr>
+          <tr><td>Mots outils</td><td class="cursive gros" style="color:#d03030">c'est</td></tr></table>`,
+      },
+      { titre: "📦 Nombre : leçon N6", html: window.LECONS.N6 },
+      {
+        titre: "📚 Entraînement à la lecture N°1 (syllabes)",
+        html: `<p><i>Chers parents,<br>Voici l'entraînement à la lecture pour votre enfant pendant les vacances d'automne. Il s'agit d'automatiser la reconnaissance des syllabes pour faciliter l'identification des mots. Pour aider votre enfant dans cet apprentissage, commencez par lui faire lire à haute voix les syllabes et les mots du tableau, d'abord ligne par ligne, puis colonne par colonne. Si vous le pouvez, faites ce travail chaque jour, en chronométrant le temps mis pour le tableau entier. Votre enfant devrait ainsi voir ses progrès en voyant son temps de lecture diminuer de jour en jour. Ensuite, vous pouvez jouer avec lui :</i></p>
+          <ul><li><i>Pointez du doigt une syllabe, un mot au hasard et demandez à votre enfant de la lire.</i></li>
+          <li><i>Enoncez une syllabe, un mot et demandez à votre enfant de la pointer du doigt.</i></li></ul>
+          <p><i>Pour automatiser la lecture, il n'y a pas de secret : il faut lire le plus souvent possible pour ne plus avoir à déchiffrer chaque fois, mais être capable de reconnaître automatiquement des syllabes, puis des mots.</i></p>
+          ${tableau(syllabes)}
+          <p>⏱️ Notez les temps : 1 ____ 2 ____ 3 ____ 4 ____ 5 ____ 6 ____</p>`,
+      },
+      {
+        titre: "📚 Entraînement à la lecture (mots et phrases)",
+        html: `<p>🥚</p>${tableau(mots.slice(0, 4))}
+          <p>🥚🥚</p>${tableau(mots.slice(0, 6))}
+          <p>🥚🥚🥚</p>${tableau(mots)}
+          <p>⏱️ Notez les temps : 1 ____ 2 ____ 3 ____ 4 ____ 5 ____ 6 ____</p>
+          <p class="gros">🥚 Lila <b>est</b> une fée. Elle <b>est dans</b> l'allée. Lila a <b>un</b> ami, <b>un</b> ours. Ils chuchotent <b>et</b> ils rient.</p>
+          <p class="gros">🥚🥚 Le chat, Léo, <b>est</b> affamé. Il file <b>dans</b> la forêt. Il <b>est</b> affamé. Il y a <b>un</b> rat <b>et un</b> mulot. Le chat chasse, Oh ! Il arrache <b>un</b> lilas !</p>
+          <p class="gros">🥚🥚🥚 Le chat, Rafi, <b>est un</b> chat farfelu. Il mord la fée Lila. La fée a mal. La fée <b>est</b> fâchée ! Le chat file <b>dans</b> la forêt. Il arrache <b>un</b> lilas ! Il <b>est</b> affamé. Il y a <b>un</b> rat <b>et un</b> mulot. Le chat chasse.</p>`,
+      },
+    ];
+
+    window.EXERCICES = [
+      // Calcul mental C1 : lire les nombres
+      {
+        type: "qcm",
+        titre: "👂 Calcul mental (C1) : quel nombre entends-tu ?",
+        consigne: "Appuie sur 🔊 puis choisis le bon nombre.",
+        questions: [
+          { q: "Nombre 1", dire: "quinze", choix: ["5", "15", "16"], bonne: 1 },
+          { q: "Nombre 2", dire: "dix-huit", choix: ["18", "8", "81"], bonne: 0 },
+          { q: "Nombre 3", dire: "onze", choix: ["1", "17", "11"], bonne: 2 },
+          { q: "Nombre 4", dire: "seize", choix: ["16", "6", "12"], bonne: 0 },
+          { q: "Nombre 5", dire: "treize", choix: ["3", "30", "13"], bonne: 2 },
+          { q: "Nombre 6", dire: "quatorze", choix: ["14", "40", "4"], bonne: 0 },
+        ],
+      },
+      {
+        type: "dictee",
+        titre: "✏️ Écris les nombres (C1)",
+        consigne: "Appuie sur 🔊 et écris le nombre avec des chiffres.",
+        mots: [{ dire: "douze", ecrire: "12" }, { dire: "dix-sept", ecrire: "17" }, { dire: "dix-neuf", ecrire: "19" }, { dire: "neuf", ecrire: "9" }],
+      },
+
+      // Lecture p 25
+      { type: "histoire", titre: "📖 Écoute « Léonard le renard »", texte: "Léonard le renard. " + leonard[3] },
+      {
+        type: "qcm",
+        titre: "🦊 As-tu bien compris ?",
+        consigne: "Relis l'histoire et choisis la bonne réponse.",
+        questions: [
+          { q: "Qui est Léonard ?", choix: ["un loup", "un renard", "un ours"], bonne: 1 },
+          { q: "Qui hurle « Là ! Un loup ! » ?", choix: ["Dina", "Alfi", "Léonard"], bonne: 0 },
+          { q: "Que mangent-ils ?", choix: ["une pomme", "un gâteau", "un ananas"], bonne: 2 },
+          { q: "Quand se passe l'histoire ?", choix: ["la nuit", "le matin", "à midi"], bonne: 0 },
+        ],
+      },
+      {
+        type: "vraifaux",
+        titre: "✅ Vrai ou faux ?",
+        consigne: "Réfléchis bien !",
+        questions: [
+          { q: "Léonard est un ami.", vrai: true },
+          { q: "Léonard est gris.", vrai: false },
+          { q: "À la fin, ils fuient.", vrai: true },
+          { q: "Le loup mange l'ananas.", vrai: false },
+        ],
+      },
+
+      // Dictée 1 « n »
+      {
+        type: "qcm",
+        titre: "👂 Entends-tu « n » ?",
+        consigne: "Appuie sur 🔊, écoute le mot et dis si tu entends le son « n ».",
+        questions: [
+          { q: "Mot 1", dire: "la lune", choix: ["Oui", "Non"], bonne: 0 },
+          { q: "Mot 2", dire: "le loup", choix: ["Oui", "Non"], bonne: 1 },
+          { q: "Mot 3", dire: "une niche", choix: ["Oui", "Non"], bonne: 0 },
+          { q: "Mot 4", dire: "un ami", choix: ["Oui", "Non"], bonne: 1 },
+          { q: "Mot 5", dire: "un animal", choix: ["Oui", "Non"], bonne: 0 },
+        ],
+      },
+      {
+        type: "dictee",
+        titre: "✏️ Dictée 1 « n »",
+        consigne: "Appuie sur 🔊 et écris ce que tu entends. Fais seulement les lignes de ton groupe !",
+        mots: [
+          { dire: "na", ecrire: "na" }, { dire: "nu", ecrire: "nu" }, { dire: "ni", ecrire: "ni" }, { dire: "né", ecrire: "né" },
+          { dire: "c'est", ecrire: "c'est" },
+          { dire: "la lune", ecrire: "la lune" }, { dire: "une niche", ecrire: "une niche" },
+          { dire: "un numéro", ecrire: "un numéro" }, { dire: "Il y a un animal.", ecrire: "Il y a un animal." },
+        ],
+      },
+
+      // N6
+      {
+        type: "trous",
+        titre: "📦 Dizaines et unités (N6)",
+        consigne: "Combien de dizaines (d) et d'unités (u) ? 10 unités = 1 dizaine.",
+        phrases: ["43 = [4] d et [3] u", "27 = [2] d et [7] u", "35 = [3] d et [5] u", "19 = [1] d et [9] u", "50 = [5] d et [0] u"],
+      },
+      {
+        type: "trous",
+        titre: "🎯 Quel nombre ? (N6)",
+        consigne: "Compte les paquets de 10 et les unités qui restent.",
+        phrases: [
+          "4 paquets de 10 et 3 billes seules : [43] billes",
+          "2 paquets de 10 et 5 billes seules : [25] billes",
+          "1 paquet de 10 et 8 billes seules : [18] billes",
+          "3 paquets de 10 et 0 bille seule : [30] billes",
+        ],
+      },
+
+      // Entraînement à la lecture
+      {
+        type: "qcm",
+        titre: "👂 Quelle syllabe entends-tu ?",
+        consigne: "Appuie sur 🔊 puis choisis la syllabe que tu entends.",
+        questions: [
+          { q: "Syllabe 1", dire: "chou", choix: ["cho", "chou", "chu"], bonne: 1 },
+          { q: "Syllabe 2", dire: "four", choix: ["four", "fou", "for"], bonne: 0 },
+          { q: "Syllabe 3", dire: "mol", choix: ["mo", "mal", "mol"], bonne: 2 },
+          { q: "Syllabe 4", dire: "char", choix: ["char", "cha", "chi"], bonne: 0 },
+          { q: "Syllabe 5", dire: "ouf", choix: ["if", "af", "ouf"], bonne: 2 },
+        ],
+      },
+      {
+        type: "histoire",
+        titre: "📚 Écoute les phrases de l'entraînement",
+        texte: "Lila est une fée. Elle est dans l'allée. Lila a un ami, un ours. Ils chuchotent et ils rient.",
+      },
+    ];
+  </script>
+  <script src="../../assets/exercices.js"></script>
+  <script src="../../assets/brouillon.js"></script>
+</body>
+</html>
