@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="theme-color" content="#ff6fa8">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="icon" href="../../icons/icon-192.png">
+  <title>Devoirs du 23 novembre</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="retour" href="../../">⬅ Retour aux dossiers</a>
+  <header class="entete">
+    <h1>Lundi 23 novembre</h1>
+    <p>Appuie sur 🔊 pour écouter. C'est parti !</p>
+  </header>
+
+  <nav class="onglets">
+    <button type="button" data-onglet="devoirs" class="actif">📋 Les devoirs</button>
+    <button type="button" data-onglet="entrainement">🎮 Entraînement</button>
+  </nav>
+  <main id="devoirs" class="exercices"></main>
+  <main id="exercices" class="exercices" hidden></main>
+  <div id="score" class="score" hidden></div>
+
+  <script>
+    const alfi = {
+      1: "Alfi et Dina marchent dans les rues et arrivent à une tour. Les amis lèvent la tête et hurlent : « Oh ! La tour chute ! » Affolés, ils fuient.",
+      2: "Alfi et Dina achètent et avalent des raviolis. Alfi se remémore Matéo : « Matéo raffole des raviolis. » Alfi lâche alors une larme. Les amis marchent dans les rues et arrivent à une tour. Ils lèvent la tête et hurlent : « Oh ! La tour chute ! » Affolés, ils fuient vite.",
+      3: "Alfi et Dina marchent dans la ville. Dans les rues, il y a des statues et des artistes. Les amis achètent et avalent des raviolis à la tomate. MIAM ! Alfi se remémore Matéo : « Matéo raffole des raviolis. » Alfi lâche alors une larme. Alfi et Dina arrivent à une tour. Les amis lèvent la tête et hurlent : « Oh ! La tour chute ! » Affolés, ils fuient vite.",
+    };
+    const strophes = [
+      ["Pomme rouge de l'automne", "A mûri sur le pommier.", "Tiens prends-la, je te la donne", "Mets-la dans ton tablier.", "L'automne est arrivé !"],
+      ["Champignons blancs de l'automne", "Ont poussé dans les bois frais.", "Tiens prends-les, je te les donne", "Mets-les dans ton grand panier.", "L'automne est arrivé !"],
+      ["Feuilles rousses de l'automne", "Beaux feuillages tout dorés.", "J'en ferai une couronne", "Et tu pourras la porter.", "L'automne est arrivé !"],
+    ];
+    const strophe = (s, cls = "") => `<p class="gros ${cls}">${s.join("<br>")}</p>`;
+
+    // Les devoirs tels qu'ils sont sur les photos (recopiés à l'identique).
+    window.DEVOIRS = [
+      {
+        titre: "📝 Pour le lundi 23 novembre",
+        html: `<ul>
+          <li>Calcul mental (pochette) : <b>B3 + D3</b></li>
+          <li>Lecture : relire <b>p 33</b> du manuel Alfi</li>
+          <li>Poésie « <b>L'automne est arrivé</b> » : revoir la première strophe + apprendre la deuxième – Faire l'illustration</li>
+        </ul>
+        <p class="rappel">Signer les cahiers/fichiers – Renouveler le matériel + rapporter la réserve</p>`,
+      },
+      {
+        titre: "🔢 Calcul mental B3 + D3 (période 2)",
+        html: `<p><i>Les calculs se font de tête à l'oral (sans limite de temps mais en essayant d'être le plus rapide possible). Ne faites pas les listes en avance, l'entraînement doit être régulier et il suit une progression de travail en classe.</i></p>
+          <p>Thème 3 : Connaître les compléments à 10 – Ranger les nombres dans l'ordre croissant</p>
+          <p><b>Liste B :</b></p>
+          <p class="gros">0 + … = 10<br>… + 2 = 10<br>… + 4 = 10<br>7 + … = 10</p>
+          <p><b>Liste D :</b></p>
+          <p class="gros">Donne des additions égales à 10.</p>`,
+      },
+      {
+        titre: "📖 Lecture : manuel Alfi p 33",
+        html: `<p>🥚</p><p class="gros">${alfi[1]}</p>
+          <p>🥚🥚</p><p class="gros">${alfi[2]}</p>
+          <p>🥚🥚🥚</p><p class="gros">${alfi[3]}</p>`,
+      },
+      {
+        titre: "🍂 Poésie : L'automne est arrivé",
+        html: `<p class="titre-lecon"><u>L'automne est arrivé</u></p>
+          <p>Strophe 1 (à revoir) :</p>${strophe(strophes[0])}
+          <p>Strophe 2 (à apprendre) :</p>${strophe(strophes[1])}
+          <p>Strophe 3 :</p>${strophe(strophes[2])}
+          <p>🎨 Faire l'illustration.</p>`,
+      },
+    ];
+
+    window.EXERCICES = [
+      // Calcul mental B3
+      {
+        type: "trous",
+        titre: "🔟 Calcul mental B3 : complète pour faire 10",
+        consigne: "Combien faut-il ajouter pour arriver à 10 ? Tu peux compter sur tes doigts !",
+        phrases: ["0 + [10] = 10", "[8] + 2 = 10", "[6] + 4 = 10", "7 + [3] = 10"],
+      },
+      {
+        type: "trous",
+        titre: "🔟 Encore un peu (compléments à 10)",
+        consigne: "Trouve le nombre qui manque.",
+        phrases: ["5 + [5] = 10", "1 + [9] = 10", "[2] + 8 = 10", "[4] + 6 = 10", "10 + [0] = 10", "9 + [1] = 10"],
+      },
+      // Calcul mental D3
+      {
+        type: "qcm",
+        titre: "🎯 Calcul mental D3 : quel calcul fait 10 ?",
+        consigne: "Choisis l'addition qui est égale à 10.",
+        questions: [
+          { q: "Calcul 1", choix: ["5 + 4", "6 + 4", "3 + 3"], bonne: 1 },
+          { q: "Calcul 2", choix: ["7 + 3", "7 + 2", "8 + 3"], bonne: 0 },
+          { q: "Calcul 3", choix: ["4 + 4", "9 + 2", "2 + 8"], bonne: 2 },
+          { q: "Calcul 4", choix: ["1 + 9", "1 + 8", "5 + 6"], bonne: 0 },
+          { q: "Calcul 5", choix: ["6 + 3", "5 + 5", "2 + 6"], bonne: 1 },
+        ],
+      },
+      {
+        type: "info",
+        titre: "🗣️ Calcul mental D3 : à toi !",
+        texte: "Dis à voix haute <b>toutes les additions égales à 10</b> que tu connais. Papa ou maman compte combien tu en trouves ! Astuce : commence par 0 + …, puis 1 + …, puis 2 + …",
+      },
+
+      // Lecture p 33
+      { type: "histoire", titre: "📖 Écoute l'histoire (🥚)", texte: alfi[1] },
+      { type: "histoire", titre: "📖 Écoute l'histoire (🥚🥚)", texte: alfi[2] },
+      { type: "histoire", titre: "📖 Écoute l'histoire (🥚🥚🥚)", texte: alfi[3] },
+      {
+        type: "qcm",
+        titre: "🗼 As-tu bien compris ?",
+        consigne: "Relis l'histoire et choisis la bonne réponse.",
+        questions: [
+          { q: "Où arrivent Alfi et Dina ?", choix: ["à une maison", "à une tour", "à une école"], bonne: 1 },
+          { q: "Que mangent les amis ?", choix: ["des raviolis", "des pommes", "un ananas"], bonne: 0 },
+          { q: "Qui raffole des raviolis ?", choix: ["Dina", "Léonard", "Matéo"], bonne: 2 },
+          { q: "Que fait Alfi quand il pense à Matéo ?", choix: ["Il rit", "Il lâche une larme", "Il chante"], bonne: 1 },
+          { q: "Pourquoi les amis fuient-ils ?", choix: ["La tour chute", "Il pleut", "Un loup arrive"], bonne: 0 },
+        ],
+      },
+      {
+        type: "vraifaux",
+        titre: "✅ Vrai ou faux ?",
+        consigne: "Réfléchis bien !",
+        questions: [
+          { q: "Alfi et Dina marchent dans les rues.", vrai: true },
+          { q: "Les raviolis sont au chocolat.", vrai: false },
+          { q: "Dans les rues, il y a des statues.", vrai: true },
+          { q: "Les amis restent sous la tour.", vrai: false },
+        ],
+      },
+
+      // Poésie
+      { type: "histoire", titre: "🍎 Écoute la strophe 1 (à revoir)", texte: "L'automne est arrivé. " + strophes[0].join(" ") },
+      { type: "histoire", titre: "🍄 Écoute la strophe 2 (à apprendre)", texte: strophes[1].join(" ") },
+      { type: "histoire", titre: "🍂 Écoute toute la poésie", texte: "L'automne est arrivé. " + strophes.map(s => s.join(" ")).join(" ") },
+      {
+        type: "qcm",
+        titre: "🍎 Strophe 1 : te souviens-tu ?",
+        consigne: "Choisis le bon mot.",
+        questions: [
+          { q: "Pomme … de l'automne", choix: ["verte", "rouge", "jaune"], bonne: 1 },
+          { q: "A mûri sur le …", choix: ["pommier", "poirier", "chêne"], bonne: 0 },
+          { q: "Mets-la dans ton …", choix: ["panier", "sac", "tablier"], bonne: 2 },
+        ],
+      },
+      {
+        type: "qcm",
+        titre: "🍄 Strophe 2 : choisis le bon mot",
+        consigne: "Écoute la strophe 2 puis choisis le mot qui manque.",
+        questions: [
+          { q: "Champignons … de l'automne", choix: ["rouges", "blancs", "roux"], bonne: 1 },
+          { q: "Ont poussé dans les bois …", choix: ["frais", "verts", "sombres"], bonne: 0 },
+          { q: "Tiens prends-les, je te les …", choix: ["prête", "laisse", "donne"], bonne: 2 },
+          { q: "Mets-les dans ton grand …", choix: ["tablier", "panier", "seau"], bonne: 1 },
+          { q: "L'automne est …", choix: ["arrivé", "parti", "fini"], bonne: 0 },
+        ],
+      },
+      {
+        type: "trous",
+        titre: "🍄 Strophe 2 : écris le mot qui manque",
+        consigne: "Récite la strophe dans ta tête et complète.",
+        phrases: [
+          "Champignons [blancs] de l'automne",
+          "Ont poussé dans les [bois] frais.",
+          "Tiens prends-les, je te les [donne]",
+          "Mets-les dans ton grand [panier].",
+        ],
+      },
+      {
+        type: "info",
+        titre: "🎨 L'illustration",
+        texte: "Dans ton cahier de poésie, dessine ce que raconte la poésie : une pomme rouge sur un pommier, des champignons blancs dans un panier, des feuilles rousses et dorées… Tu peux d'abord essayer sur le ✏️ Brouillon !",
+      },
+    ];
+  </script>
+  <script src="../../assets/exercices.js"></script>
+  <script src="../../assets/brouillon.js"></script>
+</body>
+</html>
