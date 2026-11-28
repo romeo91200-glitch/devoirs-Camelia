@@ -2,6 +2,7 @@
 // La date est celle où les devoirs sont à rendre. Le prochain dossier (après aujourd'hui)
 // clignote sur la page d'accueil avec « Devoirs du jour ».
 window.JOURS = [
+  { date: "2026-11-30", titre: "Calcul mental D4, lecture p 37 « La tour de Paris », dictée D, mots outils O1, doubles et moitiés" },
   { date: "2026-11-23", titre: "Calcul mental B3 + D3, lecture p 33, poésie « L'automne est arrivé »" },
   { date: "2026-11-06", titre: "Calcul mental C1, lecture p 25 « Léonard le renard », dictée 1 « n », leçon N6" },
   { date: "2026-11-05", titre: "Calcul mental B1, lecture p 24, évaluation calcul C1-2-3-8, sport" },

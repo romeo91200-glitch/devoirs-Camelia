@@ -139,6 +139,22 @@
       <p class="gros" style="columns:2">1 + 1 = 2<br>2 + 2 = 4<br>3 + 3 = 6<br>4 + 4 = 8<br>5 + 5 = 10<br>6 + 6 = 12<br>7 + 7 = 14<br>8 + 8 = 16<br>9 + 9 = 18<br>10 + 10 = 20</p>
       <p class="cursive">❤️ à connaître par cœur</p>`,
 
+    C5: `<p class="titre-lecon">Les moitiés <span>C 5</span></p>
+      <p>Quand on connaît les doubles, on retrouve très facilement les moitiés !</p>
+      <p class="gros" style="text-align:center">6 + 6 = 12<br>12 est le <b>double</b> de 6. → 6 est la <b>moitié</b> de 12.</p>
+      <p><b>On se sert des moitiés dans des situations de partages équitables.</b></p>
+      <p class="bulle">Si je veux te donne la moitié de mes bougies, je partage en 2 parts égales.<br>
+        <span class="gros">🕯️🕯️🕯️🕯️ | 🕯️🕯️🕯️🕯️</span><br>
+        La moitié de 8, c'est 4.<br>Les nombres pairs ont tous une moitié.</p>
+      <table class="tableau">
+        <tr><td><u>La moitié de 2</u>, c'est 1</td><td><u>La moitié de 12</u>, c'est 6</td></tr>
+        <tr><td><u>La moitié de 4</u>, c'est 2</td><td><u>La moitié de 14</u>, c'est 7</td></tr>
+        <tr><td><u>La moitié de 6</u>, c'est 3</td><td><u>La moitié de 16</u>, c'est 8</td></tr>
+        <tr><td><u>La moitié de 8</u>, c'est 4</td><td><u>La moitié de 18</u>, c'est 9</td></tr>
+        <tr><td><u>La moitié de 10</u>, c'est 5</td><td><u>La moitié de 12</u>, c'est 6</td></tr>
+        <tr><td colspan="2" style="text-align:center"><u>La moitié de 20</u>, c'est 10</td></tr>
+      </table>`,
+
     MOITIES: `<p class="titre-lecon">Les moitiés <span></span></p>
       <p>Quand on connaît les doubles, on retrouve très vite les moitiés.<br>6 + 6 = 12 &nbsp; 12 est le double de 6. → 6 est la moitié de 12.</p>
       <p>On se sert des moitiés dans des situations équitables.</p>
